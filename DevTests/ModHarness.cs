@@ -15,6 +15,6 @@ public sealed class ModHarness : HarnessSettings
     public override string ColonyName => "Era Looks Test Colony";
     public override string[] RuntimeFolders => new[] { "About", "1.7", "Defs", "Languages", "Textures" };
     public override string[] RuntimeFiles => new[] { "LoadFolders.xml" };
-    public override IEnumerable<Batch> CreateBatches() => new Batch[] { new LooksBatch(), new SwitchingBatch(), new SandboxBatch() };
+    public override IEnumerable<Batch> CreateBatches() => new Batch[] { new LooksBatch(), new SwitchingBatch(), new SandboxBatch(), new PerfBatch() };
     public override IEnumerable<string> RunAll => new[] { "eralooks-screens", "eralooks-switching" };
 }

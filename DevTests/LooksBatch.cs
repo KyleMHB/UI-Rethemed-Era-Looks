@@ -34,7 +34,9 @@ public class LooksBatch : Batch
 
     private static readonly (string shot, string tab)[] Tabs =
     {
-        ("menu", "Menu"), ("factions", "Factions"), ("ideology", "Ideos"), ("architect", "Architect"),
+        ("menu", "Menu"), ("factions", "Factions"), ("ideology", "Ideos"), ("relationships", "UIRethemedRelationships_Relationships"),
+        ("architect", "Architect"), ("animals", "Animals"), ("wildlife", "Wildlife"), ("quests", "Quests"), ("history", "History"),
+        ("calendar", "UIRethemedNotifications_Calendar"),
     };
 
     public override string Id => "eralooks-screens";
@@ -81,8 +83,8 @@ public class LooksBatch : Batch
             pick.Invoke(null, new object[] { DefDatabase<PatternDef>.GetNamed(pattern) });
             Find.Selector.ClearSelection();
             if (colonist != null) Find.Selector.Select(colonist, playSound: false, forceDesignatorDeselect: false);
-            // The main bar's own menu and the tabs of the LFS modules built on Core (Factions, Ideology), then Architect, which
-            // still carries its own copy of the theme, for comparison. A tab whose mod or DLC is missing is skipped.
+            // The main bar's own menu and the tabs of the LFS modules built on Core (Factions, Ideology, Relationships), then those
+            // that still carry their own copy of the theme, which Era Looks keeps in step with Core. A tab whose mod or DLC is missing is skipped.
             foreach (var (shot, tab) in Tabs)
             {
                 var def = DefDatabase<MainButtonDef>.GetNamedSilentFail(tab);
