@@ -2,6 +2,12 @@
 
 <!-- Agent read route: read only the newest relevant release; locate older versions by searching `^## ` headings. -->
 
+## 2026-11-17
+
+### Changed
+
+- The windows from UI Rethemed - Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife now show your era's palette and pattern. Before, they kept the theme's slate and honeycomb.
+
 ## 2026-11-16 (late night)
 
 ### Added

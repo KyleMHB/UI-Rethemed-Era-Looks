@@ -30,6 +30,7 @@ internal static class CoreBridge
         harmony.Patch(AccessTools.Method(typeof(Root_Play), nameof(Root_Play.Update)), postfix: new HarmonyMethod(typeof(CoreBridge), nameof(Update)));
         harmony.Patch(AccessTools.Method(typeof(Root_Entry), nameof(Root_Entry.Update)), postfix: new HarmonyMethod(typeof(CoreBridge), nameof(Update)));
         FactionEras.Patch(harmony);
+        ThemeCopies.Patch(harmony);
         Ready = true;
     }
 
@@ -59,11 +60,14 @@ internal static class CoreBridge
     private static void Update()
     {
         var wanted = Wanted();
-        if (wanted.palette == Shown && wanted.pattern == shownPatternName) return;
-        Shown = wanted.palette;
-        shownPatternName = wanted.pattern;
-        Apply(wanted.palette == null ? null : DefDatabase<ThemePaletteDef>.GetNamedSilentFail(wanted.palette),
-            wanted.pattern == null ? null : DefDatabase<PatternDef>.GetNamedSilentFail(wanted.pattern));
+        if (wanted.palette != Shown || wanted.pattern != shownPatternName)
+        {
+            Shown = wanted.palette;
+            shownPatternName = wanted.pattern;
+            Apply(wanted.palette == null ? null : DefDatabase<ThemePaletteDef>.GetNamedSilentFail(wanted.palette),
+                wanted.pattern == null ? null : DefDatabase<PatternDef>.GetNamedSilentFail(wanted.pattern));
+        }
+        ThemeCopies.Sync();
     }
 
     // Not inlined: Core names the overriding mod from the calling assembly, which must be this one, not Harmony's patched Update.

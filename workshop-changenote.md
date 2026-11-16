@@ -1,5 +1,6 @@
 0.2.0: new era patterns and a new settings page.
 
+- The Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife windows now show your era's palette and pattern too, instead of the theme's slate and honeycomb.
 - Every era now uses a flat material texture: fieldstone for animal, split wood for neolithic, cut stone for medieval, tread plate for industrial, hull panels for spacer, hex tiles for ultra and etched circuits for archotech. If you picked a pattern for an era yourself, your pick stays.
 - Added four stone wall patterns to choose from: castle ashlar, coursed drystone, random rubble and levelled rubble.
 - The settings page now uses UI Rethemed - Core's own cards and pickers, with a preview and palette swatches for each tech level.

@@ -7,11 +7,11 @@ This RimWorld add-on for Lazy Friday Studio's **UI Rethemed** gives each of the 
 ![The UI Rethemed - Factions window in the medieval look](docs/images/workshop/medieval-factions.jpg)
 
 > [!IMPORTANT]
-> This mod works through UI Rethemed - Core, so the era looks only show in the UI Rethemed mods that use Core.
+> The era looks show across the UI Rethemed suite.
 >
-> - **Today:** the Main Bar and Factions get the full look. Ideology gets the palette.
-> - **Not yet:** the other UI Rethemed mods, such as Colonist Card, Quests, Notifications, Animals, Wildlife and History, keep their own look for now.
-> - **Later:** Lazy Friday Studio is moving the rest of the suite onto Core. Each one picks up the era looks as it moves, with no update to this mod needed.
+> - Main Bar, Factions and Relationships get the full look. Ideology gets the palette.
+> - Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
+> - If one of those mods changes how it draws its theme in an update, it keeps its own look until this mod catches up, and the game log names it.
 
 ## Features
 
@@ -75,7 +75,7 @@ Each palette or pattern key takes a defName, such as `UIRethemedCore_Slate` or `
 
 ## Compatibility and save safety
 
-- Only the UI Rethemed mods built on Core change look. See the note at the top.
+- The note at the top lists which UI Rethemed mods change look, and how.
 - Safe to add to or remove from an existing save. Nothing is stored in your save; your settings live in the mod settings.
 - If you remove the mod while an era pattern is picked by hand, UI Rethemed - Core goes back to its honeycomb. Colours you applied from an era palette stay as your own colours.
 - The faction patterns need the UI Rethemed - Factions update from 16 November 2026 or later. With an older Factions, the mod writes one warning to the log and factions show your colony's pattern. The pattern behind each row of the faction list still hooks into how Factions draws that list. If a Factions update changes the list, the rows lose that pattern and the mod writes one warning to the log.

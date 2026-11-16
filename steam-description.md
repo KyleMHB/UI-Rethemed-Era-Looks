@@ -1,11 +1,11 @@
-[h1]⚠ Read first: only UI Rethemed mods built on Core change look[/h1]
+[h1]Which UI Rethemed mods change look[/h1]
 
-[b]This mod works through UI Rethemed - Core, so the era looks only show in the UI Rethemed mods that use Core.[/b]
+[b]The era looks show across the UI Rethemed suite.[/b]
 
 [list]
-[*][b]Today:[/b] the Main Bar and Factions get the full look. Ideology gets the palette.
-[*][b]Not yet:[/b] the other UI Rethemed mods, such as Colonist Card, Quests, Notifications, Animals, Wildlife and History, keep their own look for now.
-[*][b]Later:[/b] Lazy Friday Studio is moving the rest of the suite onto Core. Each one picks up the era looks as it moves, with no update to this mod needed.
+[*]Main Bar, Factions and Relationships get the full look. Ideology gets the palette.
+[*]Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
+[*]If one of those mods changes how it draws its theme in an update, it keeps its own look until this mod catches up, and the game log names it.
 [/list]
 
 [h1]Description[/h1]
@@ -95,7 +95,7 @@ No DLC is needed.
 [h1]Compatibility and Save Safety[/h1]
 
 [list]
-[*]Only the UI Rethemed mods built on Core change look. See the note at the top.
+[*]The note at the top lists which UI Rethemed mods change look, and how.
 [*]Load after UI Rethemed - Core. RimWorld sorts this for you.
 [*]Safe to add to or remove from an existing save. Nothing is stored in your save; your settings live in the mod settings.
 [*]If you remove the mod while an era pattern is picked by hand, UI Rethemed - Core goes back to its honeycomb. Colours you applied from an era palette stay as your own colours.

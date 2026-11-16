@@ -25,9 +25,9 @@
     <li>LazyFridayStudio.UIRethemed.Factions</li>
     <li>Garethp.ModlistConfigurator</li>
   </loadAfter>
-  <description>READ FIRST: this mod works through UI Rethemed - Core, so the era looks only show in the UI Rethemed mods that use Core. Today that is the main bar and Factions, plus the palette in Ideology. The other UI Rethemed mods keep their own look until Lazy Friday Studio moves them onto Core, and then pick up the era looks with no update to this mod.
+  <description>Gives Lazy Friday Studio's UI Rethemed a look for each tech level, so a tribal or medieval colony doesn't get the spacer-style honeycomb.
 
-Gives Lazy Friday Studio's UI Rethemed a look for each tech level, so a tribal or medieval colony doesn't get the spacer-style honeycomb.
+The era looks show across the UI Rethemed suite. The main bar, Factions and Relationships get the full look, and Ideology gets the palette. Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife still carry their own copy of the theme, so this mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
 
 Each of the seven tech levels gets a palette and a plain material texture:
 
