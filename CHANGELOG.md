@@ -8,6 +8,10 @@
 
 - The windows from UI Rethemed - Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife now show your era's palette and pattern. Before, they kept the theme's slate and honeycomb.
 
+### Fixed
+
+- Fixed animated patterns stepping unevenly as they scroll when the UI scale isn't a whole number, such as 1.5. Each step is now one screen pixel.
+
 ## 2026-11-16 (late night)
 
 ### Added

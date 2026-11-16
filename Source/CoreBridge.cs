@@ -31,6 +31,7 @@ internal static class CoreBridge
         harmony.Patch(AccessTools.Method(typeof(Root_Entry), nameof(Root_Entry.Update)), postfix: new HarmonyMethod(typeof(CoreBridge), nameof(Update)));
         FactionEras.Patch(harmony);
         ThemeCopies.Patch(harmony);
+        PatternScroll.Patch(harmony);
         Ready = true;
     }
 
