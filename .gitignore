@@ -1,0 +1,26 @@
+# Local editors and user settings
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Local work, previews, raw in-game captures and publication drafts
+/work/
+/artifacts/
+/Art/Screenshots/
+/Art/Mockups/ingame-*/
+*.log
+*.tmp
+
+# Generated build output
+**/bin/
+**/obj/
+/1.7/Assemblies/
+
+# Python artwork tooling
+__pycache__/
+*.pyc
+
+# Agent worktrees
+/.claude/
