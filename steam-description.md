@@ -14,7 +14,7 @@ Your tribal colony's interface can look like split wood and fieldstone instead o
 
 This add-on for Lazy Friday Studio's [b]UI Rethemed[/b] gives each of RimWorld's seven tech levels its own palette and pattern. Each pattern is a plain material texture that suits the level, and it changes as your colony advances. Your own UI Rethemed colours stay saved and come back whenever you turn this off.
 
-[b]Mod version:[/b] 0.1.0
+[b]Mod version:[/b] 0.2.0
 
 [h1]Features[/h1]
 
@@ -24,7 +24,8 @@ This add-on for Lazy Friday Studio's [b]UI Rethemed[/b] gives each of RimWorld's
 [*]Your own pick in UI Rethemed - Core is never overwritten. It shows at the main menu and whenever Follow the era is off.
 [*]Optionally, in the UI Rethemed - Factions window, each faction shows the pattern for its own tech level, so a tribe shows split wood and a pirate gang shows hull panels whatever your colony's era.
 [*]Items you can't use still show Core's line hatching while an era pattern is on.
-[*]Choose the palette and pattern for each era yourself, from every one UI Rethemed - Core has, or keep your own pick for an era.
+[*]Choose the palette and pattern for each era yourself, from every one UI Rethemed - Core has, or keep your own pick for an era. The settings show a preview and the palette colours for each tech level.
+[*]Four stone wall patterns to choose from as well: castle ashlar, coursed drystone, random rubble and levelled rubble.
 [/list]
 
 [h2]Animal[/h2]
@@ -70,7 +71,7 @@ It's off by default, because a faction in another era's pattern is easy to mista
 
 [list]
 [*][b]Follow the era[/b] (on by default): while a game is loaded, shows the look for your colony's tech level in place of your own pick.
-[*][b]Show each faction's era[/b] (off by default): in the UI Rethemed - Factions window, each faction's list row, header card and icon boxes show the pattern for that faction's tech level. The relations graph keeps your colony's pattern.
+[*][b]Show each faction's era[/b] (off by default): in the UI Rethemed - Factions window, each faction's list row, header card and icon boxes show the pattern for that faction's tech level. A selected faction's graph pages and leader card show its pattern too.
 [*][b]Look for each era[/b]: a palette and a pattern for each tech level, animal through archotech. Each opens a list of every palette or pattern UI Rethemed - Core has, plus [b]Your own pick[/b] to keep yours for that era. [b]Reset to defaults[/b] puts the era looks back.
 [/list]
 
@@ -123,6 +124,8 @@ That bothers me too.
 My workflow involves a lot of iteration, review, and testing. The same care I'd put into building everything by hand. I've spent hundreds of hours building mods. Using AI doesn't lower the standard I expect from my work.
 
 [h1]Links[/h1]
+
+Source code: [url=https://github.com/KyleMHB/UI-Rethemed-Era-Looks]GitHub[/url]
 
 Support me on Ko-fi.
 

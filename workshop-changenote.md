@@ -1,4 +1,4 @@
-New era patterns and a new settings page.
+0.2.0: new era patterns and a new settings page.
 
 - Every era now uses a flat material texture: fieldstone for animal, split wood for neolithic, cut stone for medieval, tread plate for industrial, hull panels for spacer, hex tiles for ultra and etched circuits for archotech. If you picked a pattern for an era yourself, your pick stays.
 - Added four stone wall patterns to choose from: castle ashlar, coursed drystone, random rubble and levelled rubble.

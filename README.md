@@ -20,7 +20,8 @@ This RimWorld add-on for Lazy Friday Studio's **UI Rethemed** gives each of the 
 - Your own pick in UI Rethemed - Core is never overwritten. It shows at the main menu and whenever Follow the era is off.
 - Optionally, in the UI Rethemed - Factions window, each faction shows the pattern for its own tech level.
 - Items you can't use still show Core's line hatching while an era pattern is on.
-- Choose the palette and pattern for each era yourself, from every one UI Rethemed - Core has, or keep your own pick for an era.
+- Choose the palette and pattern for each era yourself, from every one UI Rethemed - Core has, or keep your own pick for an era. The settings show a preview and the palette colours for each tech level.
+- Four stone wall patterns to choose from as well: castle ashlar, coursed drystone, random rubble and levelled rubble.
 
 | Tech level | Look |
 | --- | --- |
@@ -57,7 +58,7 @@ Subscribe on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedet
 In **Options > Mod options > UI Rethemed - Era Looks**:
 
 - **Follow the era** (on by default): while a game is loaded, shows the look for your colony's tech level in place of your own pick.
-- **Show each faction's era** (off by default): in the UI Rethemed - Factions window, each faction's list row, header card and icon boxes show the pattern for that faction's tech level. The relations graph keeps your colony's pattern.
+- **Show each faction's era** (off by default): in the UI Rethemed - Factions window, each faction's list row, header card and icon boxes show the pattern for that faction's tech level. A selected faction's graph pages and leader card show its pattern too.
 - **Look for each era**: a palette and a pattern for each tech level, animal through archotech. Each opens a list of every palette or pattern UI Rethemed - Core has, plus **Your own pick** to keep yours for that era. **Reset to defaults** puts the era looks back.
 
 While UI Rethemed - Core's settings page is open, your own pick shows, so changes you make there appear as you make them. Core's settings say Era Looks is overriding the look.
@@ -103,6 +104,8 @@ That bothers me too.
 My workflow involves a lot of iteration, review, and testing. The same care I'd put into building everything by hand. I've spent hundreds of hours building mods. Using AI doesn't lower the standard I expect from my work.
 
 ## Links
+
+Source code: [GitHub](https://github.com/KyleMHB/UI-Rethemed-Era-Looks)
 
 Support me on Ko-fi.
 
