@@ -10,6 +10,8 @@
 
 ### Changed
 
+- Gave Spacer its own deep blue and cyan palette in place of the theme's slate, and changed Ultra from teal and cyan to plum and magenta, so the two eras no longer look alike. Changed Industrial from bottle green to iron grey, keeping the brass. A palette you picked for any of these eras yourself stays.
+- Turned Show each faction's era off by default, since a faction in another era's look can be mistaken for a change to your colony's look. This also turns it off if you had it on, so turn it on again in the Factions window card if you want it.
 - Rebuilt the settings page with UI Rethemed - Core's own cards, palette menu and pattern picker. Each tech level now shows a preview of its title bar and pattern and a swatch of every palette colour.
 - Moved Show each faction's era into its own Factions window card, with a note on how it can be confused with a change to your colony's look.
 - Drew the era patterns at half size on icons, tabs, buttons and cards so more of each pattern shows in a small box. Split wood, hull panels and etched circuits are drawn at about a third of their size, since their shapes are spread wider. Hull panels and etched circuits also use a version with thicker seams and traces on these small surfaces, so the lines don't fade out. Large backgrounds such as the faction relations graph keep the full size. The figure patterns (rock art, tapestry, engraving) are unchanged.
@@ -19,7 +21,8 @@
 - Widened and darkened the Spacer hull panel seams on large backgrounds so the plates read clearly.
 - Redrew the Spacer hull panels with smaller insets and more staggered seams.
 - Fixed the Spacer hull panels repeating with bent seams. They now have a new layout of interlocking plates with a few cut corners, and repeat with no visible border between copies.
-- Set split wood as the Animal default, hull panels as the Spacer default, and etched circuits as the Archotech default. Saved pattern choices still take precedence.
+- Swapped the Animal and Neolithic default patterns: Animal now uses fieldstone and Neolithic uses split wood. Saved pattern choices still take precedence.
+- Set hull panels as the Spacer default, and etched circuits as the Archotech default. Saved pattern choices still take precedence.
 - Set cut stone as the medieval default. Castle ashlar, brick and the other stone patterns remain available.
 - Changed the medieval pattern from brick to castle ashlar, large dressed stone blocks like a keep wall. Brick is still available. If you picked a pattern for medieval yourself, your pick stays.
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <!-- The palettes and patterns for the era looks, also listed in UI Rethemed - Core's settings.
-       Each tech level gets a material texture. Spacer keeps Core's slate palette.
+       Each tech level gets a palette and a material texture.
        Colours are RRGGBB as Core reads them; titleBar is left out so it follows
        well, and titleAccent follows green unless set. Pattern PNGs use white RGB with an opacity mask
        so Core supplies the colour. Some patterns are adapted from vanilla or DLC textures, and others
@@ -9,7 +9,7 @@
        The older figure patterns (rock art, tapestry,
        engraving) stay as choices at the end. -->
 
-  <!-- Animal: charcoal and bone, split wood. -->
+  <!-- Animal: charcoal and bone, fieldstone (EraLooks_Scree below). -->
   <UIRethemed.Core.ThemePaletteDef>
     <defName>EraLooks_Bone</defName>
     <label>bone</label>
@@ -47,7 +47,7 @@
     <order>190</order>
   </UIRethemed.Core.PatternDef>
 
-  <!-- Neolithic: rock art palette, fieldstone. -->
+  <!-- Neolithic: rock art palette, split wood (EraLooks_SplitWood above). -->
   <UIRethemed.Core.ThemePaletteDef>
     <defName>EraLooks_RockArt</defName>
     <label>rock art</label>
@@ -156,17 +156,17 @@
     <order>213</order>
   </UIRethemed.Core.PatternDef>
 
-  <!-- Industrial: engraving palette, tread plate. -->
+  <!-- Industrial: iron grey and brass, tread plate. A cool grey, so it stays apart from Animal's warm charcoal. -->
   <UIRethemed.Core.ThemePaletteDef>
     <defName>EraLooks_Engraving</defName>
     <label>engraving</label>
-    <description>Bottle green and brass, the colours of railways and engine works. For an industrial colony.</description>
+    <description>Iron grey and brass, the colours of engine works and machine shops. For an industrial colony.</description>
     <icon>factory</icon>
     <order>220</order>
-    <window>121A16</window>
-    <panel>2A3830</panel>
-    <card>121A16</card>
-    <well>0B110E</well>
+    <window>17191A</window>
+    <panel>323639</panel>
+    <card>17191A</card>
+    <well>0E1011</well>
     <green>C4A350</green>
     <titleAccent>8E7638</titleAccent>
   </UIRethemed.Core.ThemePaletteDef>
@@ -182,7 +182,21 @@
     <order>220</order>
   </UIRethemed.Core.PatternDef>
 
-  <!-- Spacer: Core's slate palette and hull panels. -->
+  <!-- Spacer: deep blue and cyan, hull panels. -->
+  <UIRethemed.Core.ThemePaletteDef>
+    <defName>EraLooks_Spacer</defName>
+    <label>spacer</label>
+    <description>Deep blue with cyan, the colours of ship consoles. For a spacer colony.</description>
+    <icon>rocket</icon>
+    <order>230</order>
+    <window>0D161E</window>
+    <panel>23374B</panel>
+    <card>0D161E</card>
+    <well>080F16</well>
+    <green>4DBBE0</green>
+    <titleAccent>2D7698</titleAccent>
+  </UIRethemed.Core.ThemePaletteDef>
+
   <UIRethemed.Core.PatternDef>
     <defName>EraLooks_HullPanels</defName>
     <label>hull panels</label>
@@ -208,19 +222,19 @@
     <order>230</order>
   </UIRethemed.Core.PatternDef>
 
-  <!-- Ultra: deep teal and cyan, hex tiles. -->
+  <!-- Ultra: deep plum and magenta, hex tiles. -->
   <UIRethemed.Core.ThemePaletteDef>
     <defName>EraLooks_Ultratech</defName>
     <label>ultratech</label>
-    <description>Deep teal with cyan. For an ultratech colony.</description>
+    <description>Deep plum with magenta. For an ultratech colony.</description>
     <icon>atom</icon>
     <order>240</order>
-    <window>0D171D</window>
-    <panel>22384A</panel>
-    <card>0D171D</card>
-    <well>081015</well>
-    <green>4FC3D9</green>
-    <titleAccent>2E7C95</titleAccent>
+    <window>1A0F1B</window>
+    <panel>3F2645</panel>
+    <card>1A0F1B</card>
+    <well>110A12</well>
+    <green>E25CD2</green>
+    <titleAccent>9C3C92</titleAccent>
   </UIRethemed.Core.ThemePaletteDef>
 
   <UIRethemed.Core.PatternDef>

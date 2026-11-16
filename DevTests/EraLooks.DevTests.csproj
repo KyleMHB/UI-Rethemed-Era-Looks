@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>EraLooks.DevTests</AssemblyName>
+    <RootNamespace>EraLooks.DevTests</RootNamespace>
+    <OutputPath>..\work\devtests\</OutputPath>
+    <DevTestsProductionDll>..\1.7\Assemblies\EraLooks.dll</DevTestsProductionDll>
+    <RimWorldDevTestsProps Condition="'$(RimWorldDevTestsProps)' == ''">..\..\RimWorldDevTests\RimWorldDevTests.props</RimWorldDevTestsProps>
+  </PropertyGroup>
+  <Import Project="$(RimWorldDevTestsProps)" />
+  <ItemGroup>
+    <!-- Compile reference only: the cases need LFS Core's def types. -->
+    <Reference Include="UIRethemedCore">
+      <HintPath>$(RimWorldPath)\..\..\workshop\content\294100\3832843406\Versions\1.7\Assemblies\UIRethemedCore.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

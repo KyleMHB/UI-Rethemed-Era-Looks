@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480" height="160" viewBox="0 0 480 160">
+  <!-- White on clear, drawn at twice its on-screen size (240x80 on screen, two staggered rows of closely packed figures). Solid silhouettes after
+       Victorian engineering engravings: meshing gears, a steam locomotive, a sawtooth-roofed works
+       with its chimney, a paddle steamer, a gas street lamp and a pocket watch. No row ends on the figure it starts with, so
+       the same figure never sits twice in a row where tiles meet. Original drawings, kept inside the tile so nothing crosses an edge. -->
+  <defs>
+    <g id="gears" fill-rule="evenodd">
+      <path d="M11.9 -1.6L15.0 -0.9L15.0 0.9L11.9 1.6L11.1 4.6L13.4 6.7L12.5 8.3L9.5 7.3L7.3 9.5L8.3 12.5L6.7 13.4L4.6 11.1L1.6 11.9L0.9 15.0L-0.9 15.0L-1.6 11.9L-4.6 11.1L-6.7 13.4L-8.3 12.5L-7.3 9.5L-9.5 7.3L-12.5 8.3L-13.4 6.7L-11.1 4.6L-11.9 1.6L-15.0 0.9L-15.0 -0.9L-11.9 -1.6L-11.1 -4.6L-13.4 -6.7L-12.5 -8.3L-9.5 -7.3L-7.3 -9.5L-8.3 -12.5L-6.7 -13.4L-4.6 -11.1L-1.6 -11.9L-0.9 -15.0L0.9 -15.0L1.6 -11.9L4.6 -11.1L6.7 -13.4L8.3 -12.5L7.3 -9.5L9.5 -7.3L12.5 -8.3L13.4 -6.7L11.1 -4.6Z M4 0A4 4 0 1 0 -4 0A4 4 0 1 0 4 0Z"/>
+      <path transform="translate(23.5 9)" d="M7.4 1.4L9.6 2.9L8.9 4.7L6.2 4.1L4.2 6.2L4.7 8.8L3.0 9.5L1.5 7.4L-1.4 7.4L-2.9 9.6L-4.7 8.9L-4.1 6.2L-6.2 4.2L-8.8 4.7L-9.5 3.0L-7.4 1.5L-7.4 -1.4L-9.6 -2.9L-8.9 -4.7L-6.2 -4.1L-4.2 -6.2L-4.7 -8.8L-3.0 -9.5L-1.5 -7.4L1.4 -7.4L2.9 -9.6L4.7 -8.9L4.1 -6.2L6.2 -4.2L8.8 -4.7L9.5 -3.0L7.4 -1.5Z M2.5 0A2.5 2.5 0 1 0 -2.5 0A2.5 2.5 0 1 0 2.5 0Z"/>
+    </g>
+    <g id="loco">
+      <path d="M18 10H50A2 6 0 0 1 50 22H18Z"/>
+      <path d="M43 10V3H41V0H51V3H49V10Z"/>
+      <path d="M29 10C29 5 37 5 37 10Z"/>
+      <path fill-rule="evenodd" d="M4 22V5H2V2H20V5H18V22Z M8 8H14V13H8Z"/>
+      <path d="M50 22H54L61 30H50Z"/>
+      <path d="M2 23H58V25H2Z"/>
+      <circle cx="12" cy="31" r="6"/><circle cx="26" cy="31" r="6"/>
+      <circle cx="42" cy="33" r="4"/><circle cx="51" cy="33" r="4"/>
+      <circle cx="51" cy="-4" r="2.5"/><circle cx="57" cy="-8" r="3.5"/><circle cx="66" cy="-11" r="4.5"/>
+    </g>
+    <g id="works">
+      <path fill-rule="evenodd" d="M0 40V20L10 12V20L20 12V20L30 12V20H33V2H39V20H40V40Z M5 28H11V34H5Z M17 28H23V34H17Z M29 28H35V34H29Z"/>
+      <circle cx="37" cy="-3" r="2.5"/><circle cx="42" cy="-8" r="3.5"/><circle cx="50" cy="-12" r="4.5"/>
+    </g>
+    <g id="steamer">
+      <path d="M0 26H62L56 36H6Z"/>
+      <path d="M12 18H46V26H12Z"/>
+      <path d="M20 26A10 10 0 0 1 40 26Z"/>
+      <path d="M26 4H32V18H26Z"/>
+      <path d="M50 6H52V26H50Z"/>
+      <circle cx="31" cy="-1" r="2.5"/><circle cx="36" cy="-5" r="3.5"/><circle cx="44" cy="-8" r="4.5"/>
+    </g>
+    <g id="lamp">
+      <path d="M6 2H18L12 -3Z"/>
+      <path d="M7 2H17L15 10H9Z"/>
+      <path d="M10 10H14V36H16L18 40H6L8 36H10Z"/>
+      <path d="M4 14H20V16H4Z"/>
+    </g>
+    <g id="watch">
+      <path fill-rule="evenodd" d="M34 23A17 17 0 1 0 0 23A17 17 0 1 0 34 23Z M30 23A13 13 0 1 0 4 23A13 13 0 1 0 30 23Z"/>
+      <path d="M16 12H18V24H16Z M16 22H25V24H16Z"/>
+      <path d="M14 2H20V7H14Z"/>
+      <path fill-rule="evenodd" d="M21 -1A4 4 0 1 0 13 -1A4 4 0 1 0 21 -1Z M19 -1A2 2 0 1 0 15 -1A2 2 0 1 0 19 -1Z"/>
+    </g>
+  </defs>
+  <defs><g id="rows">
+    <use xlink:href="#gears" transform="translate(26 37.6) scale(1.2)"/>
+    <use xlink:href="#loco" transform="translate(76 29.55) scale(0.95)"/>
+    <use xlink:href="#lamp" transform="translate(150 21.4) scale(1.1)"/>
+    <use xlink:href="#works" transform="translate(188 29.4) scale(0.9)"/>
+    <use xlink:href="#steamer" transform="translate(236 31.2) scale(0.95)"/>
+    <use xlink:href="#gears" transform="translate(325 37.6) scale(1.2)"/>
+    <use xlink:href="#watch" transform="translate(380 25.4)"/>
+    <use xlink:href="#works" transform="translate(429 29.4) scale(0.9)"/>
+    <use xlink:href="#works" transform="translate(4 109.4) scale(0.9)"/>
+    <use xlink:href="#steamer" transform="translate(54 111.2) scale(0.95)"/>
+    <use xlink:href="#lamp" transform="translate(127 101.4) scale(1.1)"/>
+    <use xlink:href="#gears" transform="translate(185 117.6) scale(1.2)"/>
+    <use xlink:href="#watch" transform="translate(242 105.4)"/>
+    <use xlink:href="#loco" transform="translate(291 109.55) scale(0.95)"/>
+    <use xlink:href="#lamp" transform="translate(368 101.4) scale(1.1)"/>
+    <use xlink:href="#gears" transform="translate(426 117.6) scale(1.2)"/>
+  </g></defs>
+  <!-- LFS Core puts a tile edge at the middle of every bar it patterns, so the rows sit 40 lower than drawn: the
+       second row is centred on the tile edge, and its copy 160 higher completes it across the top. -->
+  <g fill="#fff">
+    <use xlink:href="#rows" y="40"/>
+    <use xlink:href="#rows" y="-120"/>
+  </g>
+</svg>

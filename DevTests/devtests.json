@@ -1,0 +1,33 @@
+{
+  "name": "Era Looks",
+  "argPrefix": "eralooks",
+  "modDir": "E:/Steam/steamapps/common/RimWorld/Mods/UI-Rethemed-Era-Looks",
+  "productionDll": "1.7/Assemblies/EraLooks.dll",
+  "devBuild": "work/devtests/EraLooks.DevTests.dll",
+  "devProject": "DevTests/EraLooks.DevTests.csproj",
+  "evidenceFolder": "EraLooksTests",
+  "runtimeFolders": [
+    "About",
+    "1.7",
+    "Defs",
+    "Languages",
+    "Textures"
+  ],
+  "runtimeFiles": [
+    "LoadFolders.xml"
+  ],
+  "modSets": {
+    "default": [
+      "brrainz.harmony",
+      "ludeon.rimworld",
+      "ludeon.rimworld.ideology",
+      "lazyfridaystudio.uirethemed.core",
+      "lazyfridaystudio.uirethemed.mainbar",
+      "lazyfridaystudio.uirethemed.colonistcard",
+      "lazyfridaystudio.uirethemed.architect",
+      "lazyfridaystudio.uirethemed.factions",
+      "lazyfridaystudio.uirethemed.ideology",
+      "kylemhb.uirethemederalooks"
+    ]
+  }
+}

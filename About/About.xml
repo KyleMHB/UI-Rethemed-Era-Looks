@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>UI Rethemed - Era Looks</name>
+  <author>KyleMHB</author>
+  <packageId>kylemhb.uirethemederalooks</packageId>
+  <supportedVersions>
+    <li>1.7</li>
+  </supportedVersions>
+  <modVersion>0.1.0</modVersion>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>LazyFridayStudio.UIRethemed.Core</packageId>
+      <displayName>[LFS] UI Rethemed - Core</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/3832843406</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>LazyFridayStudio.UIRethemed.Core</li>
+    <li>LazyFridayStudio.UIRethemed.Factions</li>
+    <li>Garethp.ModlistConfigurator</li>
+  </loadAfter>
+  <description>READ FIRST: this mod works through UI Rethemed - Core, so the era looks only show in the UI Rethemed mods that use Core. Today that is the main bar and Factions, plus the palette in Ideology. The other UI Rethemed mods keep their own look until Lazy Friday Studio moves them onto Core, and then pick up the era looks with no update to this mod.
+
+Gives Lazy Friday Studio's UI Rethemed a look for each tech level, so a tribal or medieval colony doesn't get the spacer-style honeycomb.
+
+Each of the seven tech levels gets a palette and a plain material texture:
+
+Animal: fieldstone on charcoal and bone.
+Neolithic: split wood on dark rock with red and yellow ochre.
+Medieval: cut stone on lapis blue and gold.
+Industrial: tread plate on iron grey and brass.
+Spacer: hull panels on deep blue and cyan.
+Ultra: hex tiles on deep plum and magenta.
+Archotech: etched circuits on olive grey and lime.
+
+The older rock art, tapestry and engraving figure patterns are still in the pattern lists.
+
+The look follows your colony's tech level while a game is loaded, and changes when research or a mod such as VFE Tribals raises it. Your own pick in UI Rethemed - Core's settings stays saved and shows at the main menu and whenever you turn off Follow the era in this mod's settings. In this mod's settings you can choose the palette and pattern for each tech level from every one Core has, or keep your own pick for a level.
+
+Requires Harmony and UI Rethemed - Core.</description>
+</ModMetaData>

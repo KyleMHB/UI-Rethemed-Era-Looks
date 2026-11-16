@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480" height="160" viewBox="0 0 480 160">
+  <!-- White on clear, drawn at twice its on-screen size (240x80 on screen, two staggered rows of closely packed figures). Solid single-colour figures
+       after the Bayeux Tapestry: mounted knights with kite shields, a longship, a tower, a stylised
+       tree, a running hound and a smith's anvil and hammer. Original drawings in that style, kept inside the tile so nothing
+       crosses an edge. -->
+  <defs>
+    <g id="knight">
+      <path d="M8 18C10 13 26 12 32 14L38 8C40 6 43 7 43 9L42 12L36 18C35 22 30 24 26 24L14 24C10 24 7 22 8 18Z"/>
+      <circle cx="22" cy="2" r="2.4"/>
+      <path d="M19.4 1.5L22 -3.5L24.6 1.5Z"/>
+      <path d="M18 4H24L23 13H19Z"/>
+      <path d="M14 5C15 3.5 21 3.5 22 5L18.5 15Z"/>
+      <g fill="none" stroke-linecap="round">
+        <path stroke-width="2.4" d="M12 23L9 34M16 24L18 34M28 24L27 34M32 22L35 33"/>
+        <path stroke-width="2" d="M8 18C4 19 3 24 4 28"/>
+      </g>
+    </g>
+    <g id="ship">
+      <path d="M2 24C8 36 46 36 54 24L50 26C42 31 14 31 6 26Z"/>
+      <path d="M17 4H39L37 22H19Z"/>
+      <path d="M27 2H29V28H27Z"/>
+      <path fill="none" stroke-width="2.4" stroke-linecap="round" d="M54 24C58 18 57 11 52 12M2 24C-1 18 1 14 4 15"/>
+    </g>
+    <g id="tower">
+      <path fill-rule="evenodd" d="M2 40V8H0V2H4V5H8V2H12V5H16V2H20V5H24V2H28V8H26V40Z M10 40V32A4 4 0 0 1 18 32V40Z"/>
+      <path d="M13 2V-6H15V2Z M15 -6L21 -4.5L15 -3Z"/>
+    </g>
+    <g id="tree">
+      <path d="M11 40V20H13V40Z"/>
+      <path d="M12 0C17 4 18 10 12 14C6 10 7 4 12 0Z"/>
+      <path d="M12 24C6 24 1 20 2 14C7 14 11 18 12 24Z"/>
+      <path d="M12 24C18 24 23 20 22 14C17 14 13 18 12 24Z"/>
+    </g>
+    <g id="hound">
+      <path d="M4 8C8 4 22 4 28 6L32 3L34 5L30 9C28 12 22 12 18 12L8 12C5 12 3 10 4 8Z"/>
+      <g fill="none" stroke-linecap="round">
+        <path stroke-width="2.4" d="M8 11L1 16M11 12L6 18M24 11L30 17M27 10L34 13"/>
+        <path stroke-width="1.8" d="M4 8C0 6 0 2 2 0"/>
+      </g>
+    </g>
+    <g id="anvil">
+      <path d="M0 22C8 22 12 20 14 18H44V24H36C34 26 32 28 32 30V34H38V40H16V34H22V30C22 28 20 26 18 26C10 26 4 25 0 22Z"/>
+      <path d="M27 2L37 0L38 4L28 6Z"/>
+      <path d="M33 4L35 3.5L40 14L38 15Z"/>
+    </g>
+  </defs>
+  <defs><g id="rows">
+    <use xlink:href="#knight" transform="translate(6 20.94) scale(1.25)"/>
+    <use xlink:href="#ship" transform="translate(76 19.9) scale(1.15)"/>
+    <use xlink:href="#tree" transform="translate(152 18) scale(1.1)"/>
+    <use xlink:href="#hound" transform="translate(186 28.3) scale(1.3)"/>
+    <use xlink:href="#tower" transform="translate(240 21.3) scale(1.1)"/>
+    <use xlink:href="#knight" transform="translate(342.5 20.94) scale(-1.25 1.25)"/>
+    <use xlink:href="#tree" transform="translate(356 18) scale(1.1)"/>
+    <use xlink:href="#hound" transform="translate(392 28.3) scale(1.3)"/>
+    <use xlink:href="#tower" transform="translate(445 21.3) scale(1.1)"/>
+    <use xlink:href="#tower" transform="translate(10 101.3) scale(1.1)"/>
+    <use xlink:href="#hound" transform="translate(94 108.3) scale(-1.3 1.3)"/>
+    <use xlink:href="#knight" transform="translate(105 100.94) scale(1.25)"/>
+    <use xlink:href="#tree" transform="translate(172 98) scale(1.1)"/>
+    <use xlink:href="#ship" transform="translate(206 99.9) scale(1.15)"/>
+    <use xlink:href="#knight" transform="translate(340.5 100.94) scale(-1.25 1.25)"/>
+    <use xlink:href="#tree" transform="translate(352 98) scale(1.1)"/>
+    <use xlink:href="#hound" transform="translate(386 108.3) scale(1.3)"/>
+    <use xlink:href="#anvil" transform="translate(436 111.3) scale(0.85)"/>
+  </g></defs>
+  <!-- LFS Core puts a tile edge at the middle of every bar it patterns, so the rows sit 40 lower than drawn: the
+       second row is centred on the tile edge, and its copy 160 higher completes it across the top. -->
+  <g fill="#fff" stroke="#fff" stroke-width="0">
+    <use xlink:href="#rows" y="40"/>
+    <use xlink:href="#rows" y="-120"/>
+  </g>
+</svg>

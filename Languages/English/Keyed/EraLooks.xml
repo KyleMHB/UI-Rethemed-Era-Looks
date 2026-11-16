@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <EraLooksMod_SettingsCategory>UI Rethemed - Era Looks</EraLooksMod_SettingsCategory>
+  <EraLooksMod_FollowEra>Follow the era</EraLooksMod_FollowEra>
+  <EraLooksMod_FollowEraTip>While a game is loaded, show the look you set below for your colony's tech level in place of your own pick in UI Rethemed - Core. At the main menu your own pick shows.</EraLooksMod_FollowEraTip>
+  <EraLooksMod_FactionEras>Show each faction's era</EraLooksMod_FactionEras>
+  <EraLooksMod_FactionErasTip>In the UI Rethemed - Factions window, show the pattern you set below for each faction's own tech level behind its row and its header card. A level set to your own pick shows the colony's pattern.</EraLooksMod_FactionErasTip>
+  <EraLooksMod_FollowEraNote>Your own pick in UI Rethemed - Core's settings shows at the main menu and while Core's settings page is open, so you can see changes as you make them. Core's settings say Era Looks is overriding the look.</EraLooksMod_FollowEraNote>
+  <EraLooksMod_SwitchingUnavailable>This version of UI Rethemed - Core is too old for automatic switching. Update it, or pick the era looks by hand in its settings.</EraLooksMod_SwitchingUnavailable>
+  <EraLooksMod_Switching>Switching</EraLooksMod_Switching>
+  <EraLooksMod_FactionsCard>Factions window</EraLooksMod_FactionsCard>
+  <EraLooksMod_FactionErasNote>Needs UI Rethemed - Factions. Factions in other eras' looks can be mistaken for a change to your own colony's look.</EraLooksMod_FactionErasNote>
+  <EraLooksMod_On>On</EraLooksMod_On>
+  <EraLooksMod_Off>Off</EraLooksMod_Off>
+  <EraLooksMod_LooksHint>The look each tech level shows. Pick any palette or pattern UI Rethemed - Core has, or your own pick from Core's settings.</EraLooksMod_LooksHint>
+  <EraLooksMod_LookSummary>{0} · {1}</EraLooksMod_LookSummary>
+  <EraLooksMod_PaletteTip>The colours for this tech level.</EraLooksMod_PaletteTip>
+  <EraLooksMod_PatternTip>The pattern on title bars, tabs and buttons for this tech level.</EraLooksMod_PatternTip>
+  <EraLooksMod_OwnPaletteNote>The colours you set in UI Rethemed - Core's settings.</EraLooksMod_OwnPaletteNote>
+  <EraLooksMod_Palette>Palette</EraLooksMod_Palette>
+  <EraLooksMod_Pattern>Pattern</EraLooksMod_Pattern>
+  <EraLooksMod_Era_Animal>Animal</EraLooksMod_Era_Animal>
+  <EraLooksMod_Era_Neolithic>Neolithic</EraLooksMod_Era_Neolithic>
+  <EraLooksMod_Era_Medieval>Medieval</EraLooksMod_Era_Medieval>
+  <EraLooksMod_Era_Industrial>Industrial</EraLooksMod_Era_Industrial>
+  <EraLooksMod_Era_Spacer>Spacer</EraLooksMod_Era_Spacer>
+  <EraLooksMod_Era_Ultra>Ultra</EraLooksMod_Era_Ultra>
+  <EraLooksMod_Era_Archotech>Archotech</EraLooksMod_Era_Archotech>
+  <EraLooksMod_OwnPick>Your own pick</EraLooksMod_OwnPick>
+  <EraLooksMod_ResetLooks>Reset to defaults</EraLooksMod_ResetLooks>
+  <EraLooksMod_ResetLooksTip>Set every tech level back to the look made for it.</EraLooksMod_ResetLooksTip>
+  <EraLooksMod_ResetLooksConfirm>Set every tech level back to the look made for it? Your picks here are lost.</EraLooksMod_ResetLooksConfirm>
+</LanguageData>

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <AssemblyName>EraLooks</AssemblyName>
+    <RootNamespace>EraLooks</RootNamespace>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <NoStdLib>true</NoStdLib>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <RimWorldPath Condition="'$(RimWorldPath)' == ''">E:\Steam\steamapps\common\RimWorld</RimWorldPath>
+    <WorkshopPath Condition="'$(WorkshopPath)' == ''">$(RimWorldPath)\..\..\workshop\content\294100</WorkshopPath>
+    <!-- The mod supports RimWorld 1.7 only; the DLL loads from 1.7/ (LoadFolders.xml). -->
+    <OutputPath>..\1.7\Assemblies\</OutputPath>
+    <BaseIntermediateOutputPath>..\work\obj\</BaseIntermediateOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DebugType>none</DebugType>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(RimWorldPath)\System.*.dll;$(RimWorldPath)\mscorlib.dll;$(RimWorldPath)\netstandard.dll;$(RimWorldPath)\Assembly-CSharp.dll;$(RimWorldPath)\UnityStubs.dll;$(RimWorldPath)\Waylith.UnityCompat.dll;$(RimWorldPath)\Waylith.dll;$(RimWorldPath)\Brutal.Core.Numerics.dll;$(RimWorldPath)\Brutal.Core.Common.dll" Exclude="$(RimWorldPath)\System.IO.Compression.Native.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(WorkshopPath)\2009463077\1.7\Assemblies\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UIRethemedCore">
+      <HintPath>$(WorkshopPath)\3832843406\Versions\1.7\Assemblies\UIRethemedCore.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Optional at runtime: only FactionResolver touches it, and only after FactionEras finds Factions loaded. -->
+    <Reference Include="UIRethemedFactions">
+      <HintPath>$(WorkshopPath)\3832850311\Versions\1.7\Assemblies\UIRethemedFactions.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
