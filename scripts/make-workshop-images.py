@@ -84,8 +84,9 @@ def gallery():
             shot = Image.open(RUN / f"{key}-{screen}.png").convert("RGB").crop((0, 220, 2134, 1420))
             shot.resize((1920, 1080), Image.LANCZOS).save(GALLERY / f"{key}-{screen}.jpg", quality=90)
     # This mod's own settings page and the faction window with Show each faction's era on, both in the medieval look.
-    settings = Image.open(RUN / "eralooks-settings.png").convert("RGB").crop((30, 30, 1500, 857))
-    settings.resize((1920, 1080), Image.LANCZOS).save(GALLERY / "settings.jpg", quality=90)
+    # The Era Looks window is wider than Core's and centred, so this crop keeps the whole window at 16:9 and leaves out the test runner panel.
+    settings = Image.open(RUN / "eralooks-settings.png").convert("RGB").crop((235, 150, 2155, 1230))
+    settings.save(GALLERY / "settings.jpg", quality=90)
     shot = Image.open(RUN / "faction-eras.png").convert("RGB").crop((0, 220, 2134, 1420))
     shot.resize((1920, 1080), Image.LANCZOS).save(GALLERY / "faction-eras.jpg", quality=90)
 

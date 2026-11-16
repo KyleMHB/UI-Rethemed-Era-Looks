@@ -107,11 +107,14 @@ public class LooksBatch : Batch
         pick.Invoke(null, new object[] { DefDatabase<PatternDef>.GetNamed(medieval.pattern) });
         if (own != null)
         {
+            // Shown with Follow the era ticked, as a player sees it by default.
+            EraLooksMod.Settings.followEra = true;
             Find.WindowStack.Add(new Dialog_ModSettings(own));
             yield return Wait.Frames(30);
             paths.Add(Capture(dir, "eralooks-settings"));
             yield return Wait.Frames(10);
             Find.WindowStack.TryRemove(typeof(Dialog_ModSettings), doCloseSound: false);
+            EraLooksMod.Settings.followEra = false;
         }
 
         // The faction window with Show each faction's era on, which is off by default, so each row shows its faction's era.
