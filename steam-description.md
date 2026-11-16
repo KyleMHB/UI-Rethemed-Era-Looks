@@ -38,7 +38,7 @@ Split wood on dark rock, with red ochre and yellow ochre.
 Cut stone on lapis blue and gold.
 
 [h2]Industrial[/h2]
-Bolted plates of diamond tread plate on iron grey and brass.
+Bolted plates of diamond tread plate on iron grey and steel.
 
 [h2]Spacer[/h2]
 Hull panels on deep blue and cyan.

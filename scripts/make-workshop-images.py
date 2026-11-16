@@ -16,7 +16,7 @@ FONT = "C:/Windows/Fonts/segoeuib.ttf"
 LOOKS = [("animal", "Animal", "Grass", (205, 190, 152)),
          ("neolithic", "Neolithic", "Scree", (201, 154, 69)),
          ("medieval", "Medieval", "Quatrefoil", (212, 166, 58)),
-         ("industrial", "Industrial", "Tread plate", (196, 163, 80)),
+         ("industrial", "Industrial", "Tread plate", (185, 191, 196)),
          ("spacer", "Spacer", "Panel lines", (77, 187, 224)),
          ("ultra", "Ultra", "Honeycomb", (226, 92, 210)),
          ("archotech", "Archotech", "Circuit", (226, 234, 62))]

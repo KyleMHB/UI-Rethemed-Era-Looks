@@ -10,7 +10,7 @@
 
 ### Changed
 
-- Gave Spacer its own deep blue and cyan palette in place of the theme's slate, and changed Ultra from teal and cyan to plum and magenta, so the two eras no longer look alike. Changed Industrial from bottle green to iron grey, keeping the brass. A palette you picked for any of these eras yourself stays.
+- Gave Spacer its own deep blue and cyan palette in place of the theme's slate, and changed Ultra from teal and cyan to plum and magenta, so the two eras no longer look alike. Changed Industrial from bottle green and brass to iron grey and steel. A palette you picked for any of these eras yourself stays.
 - Turned Show each faction's era off by default, since a faction in another era's look can be mistaken for a change to your colony's look. This also turns it off if you had it on, so turn it on again in the Factions window card if you want it.
 - Rebuilt the settings page with UI Rethemed - Core's own cards, palette menu and pattern picker. Each tech level now shows a preview of its title bar and pattern and a swatch of every palette colour.
 - Moved Show each faction's era into its own Factions window card, with a note on how it can be confused with a change to your colony's look.

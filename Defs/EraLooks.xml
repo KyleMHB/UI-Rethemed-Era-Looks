@@ -156,19 +156,19 @@
     <order>213</order>
   </UIRethemed.Core.PatternDef>
 
-  <!-- Industrial: iron grey and brass, tread plate. A cool grey, so it stays apart from Animal's warm charcoal. -->
+  <!-- Industrial: iron grey and steel, tread plate. A cool grey, so it stays apart from Animal's warm charcoal. -->
   <UIRethemed.Core.ThemePaletteDef>
     <defName>EraLooks_Engraving</defName>
     <label>engraving</label>
-    <description>Iron grey and brass, the colours of engine works and machine shops. For an industrial colony.</description>
+    <description>Iron grey with bright steel, the colours of engine works and machine shops. For an industrial colony.</description>
     <icon>factory</icon>
     <order>220</order>
     <window>17191A</window>
     <panel>323639</panel>
     <card>17191A</card>
     <well>0E1011</well>
-    <green>C4A350</green>
-    <titleAccent>8E7638</titleAccent>
+    <green>B9BFC4</green>
+    <titleAccent>6F777D</titleAccent>
   </UIRethemed.Core.ThemePaletteDef>
 
   <UIRethemed.Core.PatternDef>

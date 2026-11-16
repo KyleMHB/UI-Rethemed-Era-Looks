@@ -28,7 +28,7 @@ This RimWorld add-on for Lazy Friday Studio's **UI Rethemed** gives each of the 
 | Animal | Fieldstone on charcoal and bone. |
 | Neolithic | Split wood on dark rock, with red ochre and yellow ochre. |
 | Medieval | Cut stone on lapis blue and gold. |
-| Industrial | Bolted plates of diamond tread plate on iron grey and brass. |
+| Industrial | Bolted plates of diamond tread plate on iron grey and steel. |
 | Spacer | Hull panels on deep blue and cyan. |
 | Ultra | Hex tiles on deep plum and magenta. |
 | Archotech | Etched circuits on olive grey and lime. |
