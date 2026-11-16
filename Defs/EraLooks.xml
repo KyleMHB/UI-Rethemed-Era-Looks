@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The palettes and patterns for the era looks, also listed in UI Rethemed - Core's settings.
+       Each tech level gets a material texture. Spacer keeps Core's slate palette.
+       Colours are RRGGBB as Core reads them; titleBar is left out so it follows
+       well, and titleAccent follows green unless set. Pattern PNGs use white RGB with an opacity mask
+       so Core supplies the colour. Some patterns are adapted from vanilla or DLC textures, and others
+       come from original artwork or the drawing tools under Art/tools.
+       The older figure patterns (rock art, tapestry,
+       engraving) stay as choices at the end. -->
+
+  <!-- Animal: charcoal and bone, split wood. -->
+  <UIRethemed.Core.ThemePaletteDef>
+    <defName>EraLooks_Bone</defName>
+    <label>bone</label>
+    <description>Charcoal with bone and dark leather. For a colony with no tools to speak of.</description>
+    <icon>bone</icon>
+    <order>190</order>
+    <window>171513</window>
+    <panel>34302A</panel>
+    <card>171513</card>
+    <well>0E0D0B</well>
+    <green>CDBE98</green>
+    <titleAccent>6E5E48</titleAccent>
+  </UIRethemed.Core.ThemePaletteDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_SplitWood</defName>
+    <label>split wood</label>
+    <description>Rough split wood with long, uneven grain.</description>
+    <texPath>EraLooks/Patterns/SplitWood</texPath>
+    <tileSize>(224, 224)</tileSize>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.35</scale>
+    <weight>2.0</weight>
+    <order>190</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_Grass</defName>
+    <label>flagstone</label>
+    <description>Irregular flagstones, after the vanilla flagstone floor.</description>
+    <texPath>EraLooks/Patterns/Flagstone</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>2.0</weight>
+    <order>190</order>
+  </UIRethemed.Core.PatternDef>
+
+  <!-- Neolithic: rock art palette, fieldstone. -->
+  <UIRethemed.Core.ThemePaletteDef>
+    <defName>EraLooks_RockArt</defName>
+    <label>rock art</label>
+    <description>Dark rock with red ochre, and yellow ochre for what's picked. For a tribal colony.</description>
+    <icon>paw-print</icon>
+    <order>200</order>
+    <window>1C1714</window>
+    <panel>3A2F28</panel>
+    <card>1C1714</card>
+    <well>120E0C</well>
+    <green>C99A45</green>
+    <titleAccent>8A4A2E</titleAccent>
+  </UIRethemed.Core.ThemePaletteDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_Scree</defName>
+    <label>fieldstone</label>
+    <description>Irregular fieldstones with chips, cracks and dark joints.</description>
+    <texPath>EraLooks/Patterns/NeolithicFieldstone</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>2.0</weight>
+    <order>200</order>
+  </UIRethemed.Core.PatternDef>
+
+  <!-- Medieval: tapestry palette and cut stone. -->
+  <UIRethemed.Core.ThemePaletteDef>
+    <defName>EraLooks_Tapestry</defName>
+    <label>tapestry</label>
+    <description>Lapis blue and gold, the colours of manuscripts and heraldry. For a medieval colony.</description>
+    <icon>castle-turret</icon>
+    <order>210</order>
+    <window>141826</window>
+    <panel>2C3350</panel>
+    <card>141826</card>
+    <well>0C0F19</well>
+    <green>D4A63A</green>
+    <titleAccent>9C7A2A</titleAccent>
+  </UIRethemed.Core.ThemePaletteDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_CutStone</defName>
+    <label>cut stone</label>
+    <description>Interlocking dressed stones with chipped edges and fine cracks.</description>
+    <texPath>EraLooks/Patterns/CutStone</texPath>
+    <tileSize>(288, 288)</tileSize>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>1.6</weight>
+    <order>210</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_Quatrefoil</defName>
+    <label>brick</label>
+    <description>Bricks in staggered courses, after the vanilla stone tile floor.</description>
+    <texPath>EraLooks/Patterns/Brick</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>1.6</weight>
+    <order>210</order>
+  </UIRethemed.Core.PatternDef>
+
+  <!-- Alternate medieval stone walls, drawn by Art/tools/draw-drystone.py. -->
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_DryStoneCoursed</defName>
+    <label>coursed drystone</label>
+    <description>Rough stones in uneven courses, like a drystone castle wall.</description>
+    <texPath>EraLooks/Patterns/DryStoneCoursed</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>1.6</weight>
+    <order>211</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_CastleAshlar</defName>
+    <label>castle ashlar</label>
+    <description>Large dressed stone blocks in straight courses, like a keep wall.</description>
+    <texPath>EraLooks/Patterns/CastleAshlar</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>1.6</weight>
+    <order>211</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_DryStoneRubble</defName>
+    <label>random rubble</label>
+    <description>Flattish stones of mixed size packed without courses.</description>
+    <texPath>EraLooks/Patterns/DryStoneRubble</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>1.6</weight>
+    <order>212</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_RubbleLevelled</defName>
+    <label>levelled rubble</label>
+    <description>Bands of rubble between long levelling courses, as in many castle walls.</description>
+    <texPath>EraLooks/Patterns/RubbleLevelled</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>1.6</weight>
+    <order>213</order>
+  </UIRethemed.Core.PatternDef>
+
+  <!-- Industrial: engraving palette, tread plate. -->
+  <UIRethemed.Core.ThemePaletteDef>
+    <defName>EraLooks_Engraving</defName>
+    <label>engraving</label>
+    <description>Bottle green and brass, the colours of railways and engine works. For an industrial colony.</description>
+    <icon>factory</icon>
+    <order>220</order>
+    <window>121A16</window>
+    <panel>2A3830</panel>
+    <card>121A16</card>
+    <well>0B110E</well>
+    <green>C4A350</green>
+    <titleAccent>8E7638</titleAccent>
+  </UIRethemed.Core.ThemePaletteDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_TreadPlate</defName>
+    <label>tread plate</label>
+    <description>Bolted plates of diamond tread plate, the steel of walkways and engine rooms.</description>
+    <texPath>EraLooks/Patterns/TreadPlate</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>1.6</weight>
+    <order>220</order>
+  </UIRethemed.Core.PatternDef>
+
+  <!-- Spacer: Core's slate palette and hull panels. -->
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_HullPanels</defName>
+    <label>hull panels</label>
+    <description>Interlocking steel panels with angled corners and narrow seams.</description>
+    <texPath>EraLooks/Patterns/HullPanelsSmall</texPath>
+    <largeTexPath>EraLooks/Patterns/HullPanels</largeTexPath>
+    <largeTileSize>(288, 288)</largeTileSize>
+    <tileSize>(288, 288)</tileSize>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.35</scale>
+    <weight>2.2</weight>
+    <order>230</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_PanelLines</defName>
+    <label>orbital platform</label>
+    <description>Panel seams and vents, after the Odyssey orbital platform floor.</description>
+    <texPath>EraLooks/Patterns/OrbitalPlatform</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>2.2</weight>
+    <order>230</order>
+  </UIRethemed.Core.PatternDef>
+
+  <!-- Ultra: deep teal and cyan, hex tiles. -->
+  <UIRethemed.Core.ThemePaletteDef>
+    <defName>EraLooks_Ultratech</defName>
+    <label>ultratech</label>
+    <description>Deep teal with cyan. For an ultratech colony.</description>
+    <icon>atom</icon>
+    <order>240</order>
+    <window>0D171D</window>
+    <panel>22384A</panel>
+    <card>0D171D</card>
+    <well>081015</well>
+    <green>4FC3D9</green>
+    <titleAccent>2E7C95</titleAccent>
+  </UIRethemed.Core.ThemePaletteDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_Honeycomb</defName>
+    <label>hex tiles</label>
+    <description>Hexagonal tiles, after the Ideology hex tile floor.</description>
+    <texPath>EraLooks/Patterns/HexTile</texPath>
+    <weight>1.6</weight>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <order>240</order>
+  </UIRethemed.Core.PatternDef>
+
+  <!-- Archotech: olive and lime, etched circuits. -->
+  <UIRethemed.Core.ThemePaletteDef>
+    <defName>EraLooks_Archotech</defName>
+    <label>archotech</label>
+    <description>Olive grey with lime, the colours of archotech gear. For a colony at the archotech level.</description>
+    <icon>sparkle</icon>
+    <order>250</order>
+    <window>1A1B14</window>
+    <panel>3E4032</panel>
+    <card>1A1B14</card>
+    <well>111209</well>
+    <green>E2EA3E</green>
+    <titleAccent>A8B02A</titleAccent>
+  </UIRethemed.Core.ThemePaletteDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_EtchedCircuits</defName>
+    <label>etched circuits</label>
+    <description>Plates with angled corners, with lit circuit traces running from their edges to dots and rings, like the archotech structures.</description>
+    <texPath>EraLooks/Patterns/EtchedCircuitsSmall</texPath>
+    <largeTexPath>EraLooks/Patterns/EtchedCircuits</largeTexPath>
+    <largeTileSize>(288, 288)</largeTileSize>
+    <tileSize>(288, 288)</tileSize>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.35</scale>
+    <weight>2.0</weight>
+    <order>250</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_ArchoCircuit</defName>
+    <label>archotech plates</label>
+    <description>Plates and circuit traces taken from the Ideology grand archotech structure.</description>
+    <texPath>EraLooks/Patterns/ArchotechPlates</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <scale>0.5</scale>
+    <weight>2.0</weight>
+    <order>250</order>
+  </UIRethemed.Core.PatternDef>
+
+  <!-- The older figure patterns, kept as choices. -->
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_RockArt</defName>
+    <label>rock art</label>
+    <description>Eland, hunters, a giraffe and cattle, after African rock art.</description>
+    <texPath>EraLooks/Patterns/RockArt</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <weight>1.0</weight>
+    <order>300</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_Tapestry</defName>
+    <label>tapestry</label>
+    <description>Knights, a longship, a tower, a tree and a hound, after the Bayeux Tapestry.</description>
+    <texPath>EraLooks/Patterns/Tapestry</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <weight>1.0</weight>
+    <order>310</order>
+  </UIRethemed.Core.PatternDef>
+
+  <UIRethemed.Core.PatternDef>
+    <defName>EraLooks_Engraving</defName>
+    <label>engraving</label>
+    <description>Gears, a locomotive and a works chimney, after Victorian engineering engravings.</description>
+    <texPath>EraLooks/Patterns/Engraving</texPath>
+    <hatchWith>UIRethemedCore_Lines</hatchWith>
+    <weight>1.0</weight>
+    <order>320</order>
+  </UIRethemed.Core.PatternDef>
+</Defs>
