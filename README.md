@@ -4,7 +4,7 @@ Give early colonies rough wood and stone, then move on to steel panels and etche
 
 This RimWorld add-on for Lazy Friday Studio's **UI Rethemed** gives each of the seven tech levels its own palette and pattern. Each pattern is a plain material texture that suits the level, and it changes as your colony advances. Your own UI Rethemed colours stay saved and come back whenever you turn this off.
 
-![The UI Rethemed - Factions window in the medieval look](docs/images/workshop/medieval-factions.jpg)
+![The UI Rethemed - Factions window in the medieval look](docs/images/workshop/3-medieval.jpg)
 
 > [!IMPORTANT]
 > The era looks show across the UI Rethemed suite.
