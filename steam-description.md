@@ -71,7 +71,7 @@ It's off by default, because a faction in another era's pattern is easy to mista
 
 [list]
 [*][b]Follow the era[/b] (on by default): while a game is loaded, shows the look for your colony's tech level in place of your own pick.
-[*][b]Show each faction's era[/b] (off by default): in the UI Rethemed - Factions window, each faction's list row, header card and icon boxes show the pattern for that faction's tech level. A selected faction's graph pages and leader card show its pattern too.
+[*][b]Show each faction's era[/b] (off by default): shows each faction in the pattern for its own tech level in the UI Rethemed - Factions window, as described above.
 [*][b]Look for each era[/b]: a palette and a pattern for each tech level, animal through archotech. Each opens a list of every palette or pattern UI Rethemed - Core has, plus [b]Your own pick[/b] to keep yours for that era. [b]Reset to defaults[/b] puts the era looks back.
 [/list]
 
