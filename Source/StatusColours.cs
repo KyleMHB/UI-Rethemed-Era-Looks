@@ -35,8 +35,17 @@ internal static class StatusColours
         var transpiler = new HarmonyMethod(typeof(StatusColours), nameof(Redirect)) { priority = Priority.High };
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetName().Name.StartsWith("UIRethemed")))
             foreach (var method in ThemeCopies.MethodsOf(assembly))
-                if (StatusReads(ThemeCopies.Body(method)).Count > 0) harmony.Patch(method, transpiler: transpiler);
+                if (!EraColoured.Contains($"{method.DeclaringType?.FullName}.{method.Name}") && StatusReads(ThemeCopies.Body(method)).Count > 0)
+                    harmony.Patch(method, transpiler: transpiler);
     }
+
+    // Status colours that may take the era colour, as the state also shows another way. Wildlife's threat level has its own
+    // icon and label wherever its colour is used.
+    private static readonly HashSet<string> EraColoured = new()
+    {
+        "UIRethemed.Wildlife.WildlifeWidgets.ThreatColor",
+        "UIRethemed.Wildlife.WildlifeWidgets.ThreatTextColor",
+    };
 
     // From StatusColoursStartup, once defs have loaded: the greens of this mod's palettes, and Core's standard green.
     internal static void FindColours()
