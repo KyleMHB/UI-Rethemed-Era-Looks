@@ -9,8 +9,8 @@ This RimWorld add-on for Lazy Friday Studio's **UI Rethemed** gives each of the 
 > [!IMPORTANT]
 > The era looks show across the UI Rethemed suite.
 >
-> - Main Bar, Factions and Relationships get the full look. Ideology gets the palette.
-> - Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
+> - Main Bar, Factions, Relationships and Work get the full look. Ideology gets the palette.
+> - Architect, Animals, Colonist Card, History, Inspector Tabs, Notifications, Quests and Wildlife still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
 > - If one of those mods changes how it draws its theme in an update, it keeps its own look until this mod catches up, and the game log names it.
 
 ## Features
@@ -20,6 +20,7 @@ This RimWorld add-on for Lazy Friday Studio's **UI Rethemed** gives each of the 
 - Your own pick in UI Rethemed - Core is never overwritten. It shows at the main menu and whenever Follow the era is off.
 - Optionally, in the UI Rethemed - Factions window, each faction shows the pattern for its own tech level.
 - Items you can't use still show Core's line hatching while an era pattern is on.
+- Colours that show a state, such as need bars and health, keep the standard green, so a full bar and a half-empty one still look different.
 - Choose the palette and pattern for each era yourself, from every one UI Rethemed - Core has, or keep your own pick for an era. The settings show a preview and the palette colours for each tech level.
 - Four stone wall patterns to choose from as well: castle ashlar, coursed drystone, random rubble and levelled rubble.
 

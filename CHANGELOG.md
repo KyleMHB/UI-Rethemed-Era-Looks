@@ -2,6 +2,16 @@
 
 <!-- Agent read route: read only the newest relevant release; locate older versions by searching `^## ` headings. -->
 
+## 2026-11-17 (afternoon)
+
+### Changed
+
+- UI Rethemed - Inspector Tabs now shows your era's palette and pattern in the colonist and animal tabs (needs, health, bio, gear, social and the others). Before, it kept the theme's slate and honeycomb.
+
+### Fixed
+
+- Fixed colours that show a state taking the era's accent colour, which made a full need bar look like a half-empty one in eras with a gold or yellow accent. Need bars, health, mood, skill levels, goodwill and other good or bad marks now keep the standard green in every UI Rethemed mod. Title bars, buttons and selected items keep the era colour.
+
 ## 2026-11-17
 
 ### Changed

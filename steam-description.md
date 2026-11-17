@@ -3,8 +3,8 @@
 [b]The era looks show across the UI Rethemed suite.[/b]
 
 [list]
-[*]Main Bar, Factions and Relationships get the full look. Ideology gets the palette.
-[*]Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
+[*]Main Bar, Factions, Relationships and Work get the full look. Ideology gets the palette.
+[*]Architect, Animals, Colonist Card, History, Inspector Tabs, Notifications, Quests and Wildlife still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
 [*]If one of those mods changes how it draws its theme in an update, it keeps its own look until this mod catches up, and the game log names it.
 [/list]
 
@@ -22,7 +22,8 @@ This add-on for Lazy Friday Studio's [b]UI Rethemed[/b] gives each of RimWorld's
 [*]Seven era looks, one per tech level, each a palette and a pattern for UI Rethemed - Core.
 [*]The look follows your colony's tech level and changes the moment research or a mod such as VFE Tribals raises it.
 [*]Your own pick in UI Rethemed - Core is never overwritten. It shows at the main menu and whenever Follow the era is off.
-[*]Optionally, in the UI Rethemed - Factions window, each faction shows the pattern for its own tech level, so a tribe shows split wood and a pirate gang shows hull panels whatever your colony's era.
+[*]Optionally, the UI Rethemed - Factions window shows each faction in the pattern for its own tech level.
+[*]Colours that show a state, such as need bars and health, keep the standard green, so a full bar and a half-empty one still look different.
 [*]Items you can't use still show Core's line hatching while an era pattern is on.
 [*]Choose the palette and pattern for each era yourself, from every one UI Rethemed - Core has, or keep your own pick for an era. The settings show a preview and the palette colours for each tech level.
 [*]Four stone wall patterns to choose from as well: castle ashlar, coursed drystone, random rubble and levelled rubble.
@@ -99,7 +100,7 @@ No DLC is needed.
 [*]Load after UI Rethemed - Core. RimWorld sorts this for you.
 [*]Safe to add to or remove from an existing save. Nothing is stored in your save; your settings live in the mod settings.
 [*]If you remove the mod while an era pattern is picked by hand, UI Rethemed - Core goes back to its honeycomb. Colours you applied from an era palette stay as your own colours.
-[*]The faction patterns need the UI Rethemed - Factions update from 16 November 2026 or later. With an older Factions, the mod writes one warning to the log and factions show your colony's pattern. The pattern behind each row of the faction list still hooks into how Factions draws that list. If a Factions update changes the list, the rows lose that pattern and the mod writes one warning to the log.
+[*]The faction patterns need the UI Rethemed - Factions update from 16 November 2026 or later. With an older Factions, the mod writes one warning to the log and factions show your colony's pattern. If a Factions update changes how it draws its faction list, the rows lose their pattern and the mod writes one warning to the log.
 [*]Not related to combat, so Combat Extended makes no difference.
 [/list]
 
