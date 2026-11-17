@@ -1,3 +1,1 @@
-Update: every era has a new flat material pattern, there are four new stone wall patterns, and the settings page has been rebuilt with a preview for each tech level. The Architect, Animals, Colonist Card, History, Notifications, Quests and Wildlife windows now follow your era too.
-
-Show each faction's era is now off by default, including for anyone who had it on. If you want factions in their own era's look, turn it on again in the Factions card in this mod's settings.
+Update 0.3.0: need bars, health and other colours that show a state now keep the standard green, so a full bar no longer looks like a half-empty one under the gold and yellow era colours. UI Rethemed - Inspector Tabs now follows your era too, and animal icons in Animals and Wildlife no longer show the era pattern.
