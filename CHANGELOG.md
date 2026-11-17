@@ -7,6 +7,7 @@
 ### Changed
 
 - UI Rethemed - Inspector Tabs now shows your era's palette and pattern in the colonist and animal tabs (needs, health, bio, gear, social and the others). Before, it kept the theme's slate and honeycomb.
+- Animal icons, cards and details headers in UI Rethemed - Animals and Wildlife no longer show the era pattern, since animals don't belong to an era.
 
 ### Fixed
 
