@@ -32,5 +32,6 @@ public sealed class ModHarness : HarnessSettings
     {
         TestState.Restore();
         UpdateErrors.Reset();
+        HoverMouse.Remove();
     }
 }

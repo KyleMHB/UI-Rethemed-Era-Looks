@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using RimWorldDevTests;
 using UIRethemed.Core;
+using UnityEngine;
 using Verse;
 
 namespace EraLooks.DevTests;
@@ -18,8 +20,9 @@ namespace EraLooks.DevTests;
 //   which Notifications also watches for its Calendar;
 // - a message of every message type, sent again before each look as messages fade in real time;
 // - alerts of each priority, from a downed colonist (critical) and a malnourished one, besides those the quickstart raises.
-// Shots per look: the map with all of them, the first letter opened, and the Calendar tab with the conditions on it.
-// Hover cards (a letter's or alert's details under the mouse) are not shot: the runner can't place the mouse.
+// Shots per look: the map with all of them, a letter's and an alert's hover card, the first letter opened (clicking a card
+// calls Letter.OpenLetter, so this is the game's own window), and the Calendar tab with the conditions on it.
+// The hover cards are Notifications' own view of a letter or alert; HoverMouse makes them draw without a real mouse.
 // eralooks-notifications shoots every look; eralooks-notifications-<look> shoots the default look and that one.
 public class NotificationsBatch : Batch
 {
@@ -79,8 +82,10 @@ public class NotificationsBatch : Batch
             paths.Add(LooksBatch.Capture(dir, $"{name}-notifications"));
             yield return Wait.Frames(10);
 
-            // Messages draw over every window, so they go before the window shots.
+            // Messages draw over every window, so they go before the hover and window shots.
             Messages.Clear();
+            foreach (var w in HoverShots(ctx, dir, name, paths)) yield return w;
+
             var letter = Find.LetterStack.LettersListForReading.FirstOrDefault(l => l.Label.ToString().StartsWith("Test "));
             if (letter != null)
             {
@@ -100,12 +105,44 @@ public class NotificationsBatch : Batch
                 Find.MainTabsRoot.EscapeCurrentTab(playSound: false);
             }
         }
+        HoverMouse.Remove();
         TestState.Restore();
         yield return Wait.Frames(30);
 
         ctx.Setup("Screenshots: " + string.Join(", ", paths));
         var unsaved = paths.Where(p => !File.Exists(p) || new FileInfo(p).Length == 0).ToList();
         shots.Check(unsaved.Count == 0, "not written: " + string.Join(", ", unsaved));
+    }
+
+    // A big threat letter's hover card, then the critical rescue alert's (or the first alert's).
+    private static IEnumerable<Wait> HoverShots(BatchContext ctx, string dir, string look, List<string> paths)
+    {
+        if (!HoverMouse.Install(ctx)) yield break;
+        var letters = Find.LetterStack.LettersListForReading.Where(l => l.Label.ToString().StartsWith("Test ")).ToList();
+        HoverMouse.TargetLetter = letters.FirstOrDefault(l => l.def == LetterDefOf.ThreatBig) ?? letters.FirstOrDefault();
+        yield return Wait.Frames(3); // the letter's card rect is recorded as Notifications draws it
+        if (HoverMouse.LetterRect is Rect card)
+        {
+            HoverMouse.Fake = card;
+            yield return Wait.Frames(20);
+            paths.Add(LooksBatch.Capture(dir, $"{look}-letter-hover"));
+            yield return Wait.Frames(10);
+        }
+        else ctx.Setup($"{look}: no card rect recorded for {HoverMouse.TargetLetter?.Label}; skipped the letter hover shot");
+        HoverMouse.Fake = null;
+        HoverMouse.TargetLetter = null;
+
+        if (HoverMouse.AlertRow() is (Alert alert, Rect row))
+        {
+            HoverMouse.Fake = row;
+            yield return Wait.Frames(20);
+            paths.Add(LooksBatch.Capture(dir, $"{look}-alert-hover"));
+            ctx.Setup($"{look}: alert hover on {alert.GetType().Name}");
+            yield return Wait.Frames(10);
+        }
+        else ctx.Setup($"{look}: no alert row recorded; skipped the alert hover shot");
+        HoverMouse.Fake = null;
+        yield return Wait.Frames(5);
     }
 
     // The alerts the readout shows, so a run says which ones the shots can hold.
@@ -186,5 +223,89 @@ public class NotificationsBatch : Batch
             colonists[0].health.AddHediff(malnutrition);
             ctx.Setup($"Starved {colonists[0].LabelShort} for the starvation alert");
         }
+    }
+}
+
+
+// Makes Notifications draw one letter's or alert's hover card for the shots. The runner can't move the real mouse, and setting
+// Event.current.mousePosition did not reach Notifications' checks (they still saw the real cursor, 2026-11-17). So the
+// Mouse.IsOver calls in the methods that decide hovering are swapped for IsOver below, which also answers yes over the target's
+// rect: Notifications' LetterCards.CheckForMouseOverTextAt and AlertRows.DrawInfoPane, and the game's
+// AlertsReadout.AlertsReadoutOnGUI, which picks the alert whose info pane is drawn. Notifications' internals are reached by name,
+// and a missing one skips the hover shots with a setup line rather than failing the batch. Removed at the batch's end (and by
+// OnBatchEnd), so it never runs outside these shots.
+internal static class HoverMouse
+{
+    private const string Id = "kylemhb.uirethemederalooks.devtests.hover";
+    private static Harmony harmony;
+
+    // The rect to treat as under the mouse, or null for the real mouse only.
+    internal static Rect? Fake;
+    internal static Letter TargetLetter;
+    internal static Rect? LetterRect;
+
+    private static readonly Type Cards = AccessTools.TypeByName("UIRethemed.Notifications.LetterCards");
+    private static readonly Type Rows = AccessTools.TypeByName("UIRethemed.Notifications.AlertRows");
+    private static readonly MethodInfo CardRect = AccessTools.Method(Cards, "CardRect");
+    private static readonly MethodInfo TimeOf = AccessTools.Method(Cards, "TimeOf");
+    private static readonly MethodInfo LetterY = AccessTools.Method(AccessTools.TypeByName("UIRethemed.Notifications.Placement"), "LetterY");
+    private static readonly MethodInfo Label = AccessTools.Method(typeof(Letter), "PostProcessedLabel");
+    private static readonly MethodInfo RealIsOver = AccessTools.Method(typeof(Mouse), nameof(Mouse.IsOver), new[] { typeof(Rect) });
+
+    internal static bool Install(BatchContext ctx)
+    {
+        if (harmony != null) return true;
+        var check = AccessTools.Method(Cards, "CheckForMouseOverTextAt");
+        var pane = AccessTools.Method(Rows, "DrawInfoPane");
+        var readout = AccessTools.Method(typeof(AlertsReadout), nameof(AlertsReadout.AlertsReadoutOnGUI));
+        if (check == null || pane == null || readout == null || CardRect == null || TimeOf == null || LetterY == null || Label == null || RealIsOver == null)
+        {
+            ctx.Setup("Notifications' LetterCards, AlertRows or Placement changed; skipped the hover shots");
+            return false;
+        }
+        harmony = new Harmony(Id);
+        var swap = new HarmonyMethod(typeof(HoverMouse), nameof(SwapIsOver));
+        foreach (var method in new[] { check, pane, readout }) harmony.Patch(method, transpiler: swap);
+        harmony.Patch(check, prefix: new HarmonyMethod(typeof(HoverMouse), nameof(Record)));
+        return true;
+    }
+
+    internal static void Remove()
+    {
+        harmony?.UnpatchAll(Id);
+        harmony = null;
+        Fake = null;
+        TargetLetter = null;
+        LetterRect = null;
+    }
+
+    public static bool IsOver(Rect rect) => (Fake is Rect fake && rect.Contains(fake.center)) || Mouse.IsOver(rect);
+
+    private static IEnumerable<CodeInstruction> SwapIsOver(IEnumerable<CodeInstruction> instructions)
+    {
+        var mine = AccessTools.Method(typeof(HoverMouse), nameof(IsOver));
+        foreach (var code in instructions)
+        {
+            if (code.Calls(RealIsOver)) code.operand = mine;
+            yield return code;
+        }
+    }
+
+    // Notifications' own card rect for the target letter at the height it is drawn at, as its hover check works it out.
+    private static void Record(Letter __0, float __1)
+    {
+        if (__0 == null || __0 != TargetLetter) return;
+        string label = (string)Label.Invoke(__0, null);
+        float slot = (float)LetterY.Invoke(null, new object[] { __1 });
+        LetterRect = (Rect)CardRect.Invoke(null, new object[] { slot, label, (string)TimeOf.Invoke(null, new object[] { __0 }) });
+    }
+
+    // The critical rescue alert's row as Notifications last drew it, or the first row.
+    internal static (Alert alert, Rect row)? AlertRow()
+    {
+        if (AccessTools.Field(Rows, "rows")?.GetValue(null) is not Dictionary<Alert, Rect> rows || rows.Count == 0) return null;
+        var pick = rows.FirstOrDefault(r => r.Key is Alert_ColonistNeedsRescuing);
+        if (pick.Key == null) pick = rows.First();
+        return (pick.Key, pick.Value);
     }
 }
