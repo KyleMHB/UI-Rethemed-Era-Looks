@@ -8,6 +8,10 @@
 
 - UI Rethemed - History and Notifications now get the era look straight from UI Rethemed - Core, since their latest updates draw through Core. This mod no longer copies its colours and pattern into them. Notifications' letter cards are now plain unless you pick a pattern for them on Notifications' tab in Core's settings.
 
+### Fixed
+
+- Fixed an error in the log while a new game or a save loads, before the world exists.
+
 ## 2026-11-17 (afternoon)
 
 ### Changed

@@ -41,7 +41,8 @@ internal static class CoreBridge
     internal static (string palette, string pattern) Wanted()
     {
         if (EraLooksMod.Settings == null || !EraLooksMod.Settings.followEra || Current.ProgramState != ProgramState.Playing) return default;
-        var player = Find.FactionManager?.OfPlayer;
+        // Not Find.FactionManager: it throws while a new game or a save is loading, before the world exists.
+        var player = Current.Game?.World?.factionManager?.OfPlayer;
         return player?.def == null ? default : LookFor(player.def.techLevel);
     }
 
