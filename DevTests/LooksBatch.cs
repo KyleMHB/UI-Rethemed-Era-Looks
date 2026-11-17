@@ -36,8 +36,19 @@ public class LooksBatch : Batch
     {
         ("menu", "Menu"), ("factions", "Factions"), ("ideology", "Ideos"), ("relationships", "UIRethemedRelationships_Relationships"),
         ("architect", "Architect"), ("animals", "Animals"), ("wildlife", "Wildlife"), ("quests", "Quests"), ("history", "History"),
-        ("calendar", "UIRethemedNotifications_Calendar"),
+        ("calendar", "UIRethemedNotifications_Calendar"), ("work", "Work"),
     };
+
+    // The selected colonist's inspector tabs, drawn by UI Rethemed - Inspector Tabs when it is loaded.
+    private static readonly (string shot, Type tab)[] InspectTabs =
+    {
+        ("needs", typeof(ITab_Pawn_Needs)), ("health", typeof(ITab_Pawn_Health)), ("bio", typeof(ITab_Pawn_Character)),
+        ("gear", typeof(ITab_Pawn_Gear)), ("social", typeof(ITab_Pawn_Social)),
+    };
+
+    // Need levels low, middling and high in turn, so the shots show each status colour (UI Rethemed colours a need red under
+    // 20%, yellow under 45% and green above).
+    private static readonly float[] NeedLevels = { 0.12f, 0.35f, 0.85f };
 
     public override string Id => "eralooks-screens";
     public override int SegmentCount => 1;
@@ -73,6 +84,8 @@ public class LooksBatch : Batch
         }
         var core = LoadedModManager.ModHandles.FirstOrDefault(m => m.GetType().FullName == "UIRethemed.Core.UIRethemedCoreMod");
         var colonist = ctx.Map.mapPawns.FreeColonists.FirstOrDefault();
+        var toggleTab = AccessTools.Method(typeof(InspectPaneUtility), "ToggleTab");
+        if (toggleTab == null) ctx.Setup("InspectPaneUtility.ToggleTab was not found; skipped the inspector tab shots");
         string dir = RunDir();
         var paths = new List<string>();
         // These shots set each look by hand, so the colony's own era must not replace it.
@@ -90,10 +103,27 @@ public class LooksBatch : Batch
                 var def = DefDatabase<MainButtonDef>.GetNamedSilentFail(tab);
                 if (def == null) continue;
                 Find.MainTabsRoot.SetCurrentTab(def, playSound: false);
+                SetLevels(colonist);
                 yield return Wait.Frames(30);
                 paths.Add(Capture(dir, $"{name}-{shot}"));
                 yield return Wait.Frames(10);
                 Find.MainTabsRoot.EscapeCurrentTab(playSound: false);
+            }
+
+            if (colonist != null && toggleTab != null)
+            {
+                var pane = (MainTabWindow_Inspect)MainButtonDefOf.Inspect.TabWindow;
+                foreach (var (shot, type) in InspectTabs)
+                {
+                    var tab = colonist.GetInspectTabs()?.FirstOrDefault(t => t.GetType() == type);
+                    if (tab == null) continue;
+                    if (pane.OpenTabType != type) toggleTab.Invoke(null, new object[] { tab, pane });
+                    SetLevels(colonist);
+                    yield return Wait.Frames(30);
+                    paths.Add(Capture(dir, $"{name}-{shot}"));
+                    yield return Wait.Frames(10);
+                }
+                pane.OpenTabType = null;
             }
 
             if (core != null) Find.WindowStack.Add(new Dialog_ModSettings(core));
@@ -161,6 +191,18 @@ public class LooksBatch : Batch
         var unsaved = paths.Where(p => !File.Exists(p) || new FileInfo(p).Length == 0).ToList();
         shots.Check(core != null && unsaved.Count == 0,
             core == null ? "LFS Core's Mod class was not found, so its settings page could not open" : "not written: " + string.Join(", ", unsaved));
+    }
+
+    private static void SetLevels(Pawn colonist)
+    {
+        var needs = colonist?.needs?.AllNeeds;
+        if (needs == null) return;
+        int i = 0;
+        foreach (var need in needs)
+        {
+            if (need is Need_Mood) continue;
+            need.CurLevelPercentage = NeedLevels[i++ % NeedLevels.Length];
+        }
     }
 
     internal static string Capture(string dir, string name)
