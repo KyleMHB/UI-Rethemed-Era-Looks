@@ -8,7 +8,8 @@ using Verse;
 namespace EraLooks.DevTests;
 
 // A colony to look at by hand, not a check: run it with --keep-open and the game is left paused on the quickstart map.
-// It adds one visible faction for every tech level from animal to archotech, so the faction window shows each era.
+// It adds one visible faction for every tech level from animal to archotech, so the faction window shows each era, and
+// wild and tame animals for the Wildlife and Animals tabs.
 // Vanilla and the DLCs have no visible animal, medieval or archotech faction, so for those (and any other era the loaded
 // mods lack) it registers a copy of a tribe or outlander faction def with that tech level. The copies exist only in this
 // process: a save made here needs the developer DLL to load again.
@@ -49,6 +50,7 @@ public class SandboxBatch : Batch
             Find.FactionManager.Add(faction);
             ctx.Setup($"{era}: added {faction.Name} ({def.defName})");
         }
+        TestAnimals.Spawn(ctx.Map, ctx.Map.mapPawns.FreeColonists.FirstOrDefault()?.Position ?? ctx.Map.Center, ctx);
         yield return Wait.Frames(5);
         scope.Check(missing.Count == 0, "no faction def to copy for " + string.Join(", ", missing));
     }

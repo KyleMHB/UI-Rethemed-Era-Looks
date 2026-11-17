@@ -84,6 +84,7 @@ public class LooksBatch : Batch
         }
         var core = LoadedModManager.ModHandles.FirstOrDefault(m => m.GetType().FullName == "UIRethemed.Core.UIRethemedCoreMod");
         var colonist = ctx.Map.mapPawns.FreeColonists.FirstOrDefault();
+        TestAnimals.Spawn(ctx.Map, colonist?.Position ?? ctx.Map.Center, ctx);
         var toggleTab = AccessTools.Method(typeof(InspectPaneUtility), "ToggleTab");
         if (toggleTab == null) ctx.Setup("InspectPaneUtility.ToggleTab was not found; skipped the inspector tab shots");
         string dir = RunDir();
