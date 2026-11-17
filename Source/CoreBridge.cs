@@ -31,6 +31,7 @@ internal static class CoreBridge
         harmony.Patch(AccessTools.Method(typeof(Root_Entry), nameof(Root_Entry.Update)), postfix: new HarmonyMethod(typeof(CoreBridge), nameof(Update)));
         FactionEras.Patch(harmony);
         ThemeCopies.Patch(harmony);
+        StatusColours.Patch(harmony);
         PatternScroll.Patch(harmony);
         Ready = true;
     }
@@ -69,6 +70,7 @@ internal static class CoreBridge
                 wanted.pattern == null ? null : DefDatabase<PatternDef>.GetNamedSilentFail(wanted.pattern));
         }
         ThemeCopies.Sync();
+        StatusColours.Refresh();
     }
 
     // Not inlined: Core names the overriding mod from the calling assembly, which must be this one, not Harmony's patched Update.

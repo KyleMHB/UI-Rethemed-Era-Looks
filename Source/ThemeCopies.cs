@@ -65,27 +65,26 @@ internal static class ThemeCopies
             return;
         }
         var transpiler = new HarmonyMethod(typeof(ThemeCopies), nameof(ReadCore));
-        foreach (var type in AccessTools.GetTypesFromAssembly(theme.Assembly))
-        {
-            var methods = AccessTools.GetDeclaredMethods(type).Cast<MethodBase>()
-                .Concat(AccessTools.GetDeclaredConstructors(type).Where(c => !c.IsStatic));
-            foreach (var method in methods)
-            {
-                if (method.IsAbstract || method.ContainsGenericParameters || !ReadsColour(method)) continue;
+        foreach (var method in MethodsOf(theme.Assembly))
+            if (Body(method).Any(code => code.operand is FieldInfo field && reads.ContainsKey(field)))
                 harmony.Patch(method, transpiler: transpiler);
-            }
-        }
     }
 
-    private static bool ReadsColour(MethodBase method)
+    internal static IEnumerable<MethodBase> MethodsOf(Assembly assembly) =>
+        AccessTools.GetTypesFromAssembly(assembly)
+            .SelectMany(type => AccessTools.GetDeclaredMethods(type).Cast<MethodBase>()
+                .Concat(AccessTools.GetDeclaredConstructors(type).Where(c => !c.IsStatic)))
+            .Where(method => !method.IsAbstract && !method.ContainsGenericParameters);
+
+    internal static List<(OpCode opcode, object operand)> Body(MethodBase method)
     {
         try
         {
-            return PatchProcessor.ReadMethodBody(method).Any(code => code.Value is FieldInfo field && reads.ContainsKey(field));
+            return PatchProcessor.ReadMethodBody(method).Select(code => (code.Key, code.Value)).ToList();
         }
         catch (Exception)
         {
-            return false; // extern or bodiless, nothing to redirect
+            return new List<(OpCode, object)>(); // extern or bodiless
         }
     }
 
