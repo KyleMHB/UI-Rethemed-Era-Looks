@@ -22,8 +22,9 @@ public sealed class ModHarness : HarnessSettings
 
     // The tiers are in TESTING.md: run-all is the quick tier; the screens batches are the visual tier.
     public override IEnumerable<Batch> CreateBatches() =>
-        new Batch[] { new ChecksBatch(), new SwitchingBatch(), new LooksBatch(), new SandboxBatch(), new PerfBatch() }
-            .Concat(LooksBatch.Looks.Where(l => l.name != "default").Select(l => (Batch)new LooksBatch(l.name)));
+        new Batch[] { new ChecksBatch(), new SwitchingBatch(), new LooksBatch(), new NotificationsBatch(), new SandboxBatch(), new PerfBatch() }
+            .Concat(LooksBatch.Looks.Where(l => l.name != "default").Select(l => (Batch)new LooksBatch(l.name)))
+            .Concat(LooksBatch.Looks.Where(l => l.name != "default").Select(l => (Batch)new NotificationsBatch(l.name)));
 
     public override IEnumerable<string> RunAll => new[] { "eralooks-checks", "eralooks-switching" };
 

@@ -32,10 +32,18 @@ Updated through: 0.3.0 plus unreleased changes on 2026-11-17
 | Tier | When | Runs |
 | --- | --- | --- |
 | Quick | Every code change | `python tools/eralooks_test.py run run-all`: `eralooks-checks` and `eralooks-switching`, no screenshots. 10 s in game after a 25 s launch (run `20261117-140733`). |
-| Visual | A palette, pattern or texture change | `python tools/eralooks_test.py run eralooks-screens-<era>` for each era changed, which shoots that era beside the default look. 25 s and 34 shots for medieval (run `20261117-140836`). |
-| Full | A release, or an update to LFS Core, an LFS module or RimWorld | `python tools/eralooks_test.py run run-all eralooks-screens --timeout 2400`, then the [performance test](#performance-test) under the `perf` mod set. |
+| Visual | A palette, pattern or texture change | `python tools/eralooks_test.py run eralooks-screens-<era>` for each era changed, which shoots that era beside the default look. 25 s and 34 shots for medieval (run `20261117-140836`). For a change to how letters, alerts, messages or game conditions look, also `eralooks-notifications-<era>`: 12 s and 6 shots for medieval (run `20261117-152702`). |
+| Full | A release, or an update to LFS Core, an LFS module or RimWorld | `python tools/eralooks_test.py run run-all eralooks-screens eralooks-notifications --timeout 2400`, then the [performance test](#performance-test) under the `perf` mod set. |
 
 The eras for `eralooks-screens-<era>` are `animal`, `neolithic`, `medieval`, `industrial`, `spacer`, `ultra` and `archotech`. `eralooks-screens` shoots every look plus this mod's settings page and the faction window and relations graph for one faction per era. It adds its own faction for each era first.
+
+`eralooks-notifications` and `eralooks-notifications-<era>` set up what UI Rethemed - Notifications draws, then shoot it in each look:
+- a letter of every standard letter def;
+- real incidents (eclipse, solar flare, cold snap, toxic fallout, resource pod, ship chunk), for the game conditions and Calendar;
+- a message of every message type;
+- a downed colonist and a malnourished one, for alerts.
+
+Each look gets three shots: the map with all of these, one test letter opened, and the Calendar. Hover cards aren't shot, because the runner can't place the mouse. The game checks no alerts in a colony's first 600 ticks, so the batch moves the clock to tick 700 without simulating. Simulating would let the colonists rescue or feed each other first. The run's setup lines list the alerts that were active. Run `20261117-153125` had 6: Colonist needs rescue (critical), Need colonist beds, Starvation, Need doctor, animal starvation and pen needed. The runner's progress panel covers the bottom of the alert list in the map shot.
 
 | Area (source folder or feature) | Covering batches |
 | --- | --- |
@@ -46,6 +54,7 @@ The eras for `eralooks-screens-<era>` are `animal`, `neolithic`, `medieval`, `in
 | `PatternScroll.cs` | `eralooks-checks` (`patches-applied`) only; the snapped scroll is judged by eye in game |
 | `SettingsPage.cs` | `eralooks-screens` (settings page shot) only |
 | `Defs/`, `Textures/` | `eralooks-checks` (`defs-load`); `eralooks-screens-<era>` |
+| UI Rethemed - Notifications (drawn through Core, no Era Looks code) | `eralooks-notifications-<era>`; the Calendar tab also in `eralooks-screens` |
 | Frame and pattern-draw cost | `eralooks-perf`, in the Full tier |
 
 ## Behaviour checks
@@ -66,7 +75,7 @@ The eras for `eralooks-screens-<era>` are `animal`, `neolithic`, `medieval`, `in
 
 ## Screenshot evidence
 
-The screenshot batches check no behaviour. Their only case, `eralooks.screenshots-saved`, confirms the files were written, so count it as evidence, not as a pass. The developer judges what the shots show. They are saved in the run's evidence folder, which `python tools/eralooks_test.py latest` prints.
+The screenshot batches check no behaviour. Their only cases, `eralooks.screenshots-saved` and `eralooks.notifications-shots-saved`, confirm the files were written, so count it as evidence, not as a pass. The developer judges what the shots show. They are saved in the run's evidence folder, which `python tools/eralooks_test.py latest` prints.
 
 ## Performance test
 
