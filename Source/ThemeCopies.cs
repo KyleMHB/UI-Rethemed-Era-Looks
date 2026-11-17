@@ -17,8 +17,8 @@ internal static class ThemeCopies
     // Each module's namespace under UIRethemed, and its name as players see it.
     private static readonly (string module, string name)[] Modules =
     {
-        ("Architect", "Architect"), ("Animals", "Animals"), ("ColonistCard", "Colonist Card"), ("History", "History"),
-        ("InspectorTabs", "Inspector Tabs"), ("Notifications", "Notifications"), ("Quests", "Quests"), ("Wildlife", "Wildlife"),
+        ("Architect", "Architect"), ("Animals", "Animals"), ("ColonistCard", "Colonist Card"),
+        ("InspectorTabs", "Inspector Tabs"), ("Quests", "Quests"), ("Wildlife", "Wildlife"),
     };
 
     private static readonly List<(string name, Type theme)> loaded = new();
