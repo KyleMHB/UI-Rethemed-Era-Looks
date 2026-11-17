@@ -17,12 +17,13 @@ namespace EraLooks.DevTests;
 // shows in every era. A palette or pattern the player chose for an era replaces that era's look, and 'Your own pick' shows
 // the player's own palette or pattern. An era pattern hatches what can't be used with Core's fine lines.
 // Mechanical setup: the developer sets a distinctive own pick (Core's midnight palette and grid pattern) through Core's setters,
-// then sets the player faction def's tech level directly, as VFE Tribals and Node Research do, and restores it at the end.
+// then sets the player faction def's tech level directly, as VFE Tribals and Node Research do; TestState restores it.
+// Screenshots are LooksBatch's job; this batch only checks, so it belongs to the quick tier.
 public class SwitchingBatch : Batch
 {
     private const string OwnPalette = "UIRethemedCore_Midnight", OwnPattern = "UIRethemedCore_Grid";
 
-    private static readonly (TechLevel era, string look, string pattern)[] Eras =
+    internal static readonly (TechLevel era, string look, string pattern)[] Eras =
     {
         (TechLevel.Animal, "EraLooks_Bone", "EraLooks_Scree"),
         (TechLevel.Neolithic, "EraLooks_RockArt", "EraLooks_SplitWood"),
@@ -46,6 +47,7 @@ public class SwitchingBatch : Batch
 
     public override IEnumerable<Wait> Segment(int index, BatchContext ctx)
     {
+        TestState.Save();
         var faction = Faction.OfPlayer.def;
         var startEra = faction.techLevel;
         var core = UIRethemedCoreMod.Settings;
@@ -57,7 +59,6 @@ public class SwitchingBatch : Batch
         var follows = ctx.Begin("eralooks.follows-era");
         var wrong = new List<string>();
         var kept = new List<string>();
-        string dir = LooksBatch.RunDir();
         foreach (var (era, look, expectedPattern) in Eras)
         {
             faction.techLevel = era;
@@ -71,28 +72,27 @@ public class SwitchingBatch : Batch
             string saved = core.colors.TryGetValue("Green", out var s) ? s : null;
             if (core.patternDef != OwnPattern || saved != ownGreen)
                 kept.Add($"{era}: saved pattern {core.patternDef}, saved green {saved}");
-            var factions = DefDatabase<MainButtonDef>.GetNamedSilentFail("Factions");
-            if (factions != null)
-            {
-                Find.MainTabsRoot.SetCurrentTab(factions, playSound: false);
-                yield return Wait.Frames(20);
-                LooksBatch.Capture(dir, "switch-" + era.ToString().ToLowerInvariant());
-                yield return Wait.Frames(10);
-                Find.MainTabsRoot.EscapeCurrentTab(playSound: false);
-            }
         }
         follows.Check(wrong.Count == 0, string.Join("; ", wrong));
         ctx.Begin("eralooks.own-pick-kept").Check(kept.Count == 0, "the player's saved pick changed: " + string.Join("; ", kept));
 
-        // The player's choices: medieval keeps their own palette under the honeycomb; industrial gets slate under rock art.
+        // The player's choices: medieval keeps their own palette under the honeycomb; industrial gets slate under rock art;
+        // spacer keeps its era palette under the player's own pattern.
         var choice = ctx.Begin("eralooks.per-era-choice");
         var settings = EraLooksMod.Settings;
         settings.SetPalette(EraGroup.Medieval, EraLooksSettings.OwnPick);
         settings.SetPattern(EraGroup.Medieval, "UIRethemedCore_Honeycomb");
         settings.SetPalette(EraGroup.Industrial, "UIRethemedCore_Slate");
         settings.SetPattern(EraGroup.Industrial, "EraLooks_RockArt");
+        settings.SetPattern(EraGroup.Spacer, EraLooksSettings.OwnPick);
         var chosen = new List<string>();
-        foreach (var (era, pattern, green) in new[] { (TechLevel.Medieval, "UIRethemedCore_Honeycomb", ownGreen), (TechLevel.Industrial, "EraLooks_RockArt", CoreLooks.Green("UIRethemedCore_Slate") ?? "2CAC41") })
+        var expected = new[]
+        {
+            (TechLevel.Medieval, "UIRethemedCore_Honeycomb", ownGreen),
+            (TechLevel.Industrial, "EraLooks_RockArt", CoreLooks.Green("UIRethemedCore_Slate") ?? "2CAC41"),
+            (TechLevel.Spacer, OwnPattern, CoreLooks.Green("EraLooks_Spacer") ?? "2CAC41"),
+        };
+        foreach (var (era, pattern, green) in expected)
         {
             faction.techLevel = era;
             yield return Wait.Frames(5);
@@ -116,16 +116,7 @@ public class SwitchingBatch : Batch
         ctx.Setup("Hatching: " + string.Join(", ", hatches.Select(h => $"{h.look} -> {h.defName}")));
         hatch.Check(hatches.All(h => h.defName == "UIRethemedCore_Lines"), "an era pattern doesn't hatch with UIRethemedCore_Lines");
 
-        // A screenshot of this mod's settings page with its per-era rows, for review.
-        EraLooksMod.Settings.followEra = true;
-        Find.WindowStack.Add(new Dialog_ModSettings(LoadedModManager.GetMod<EraLooksMod>()));
-        yield return Wait.Frames(30);
-        LooksBatch.Capture(dir, "eralooks-settings");
-        yield return Wait.Frames(10);
-        Find.WindowStack.TryRemove(typeof(Dialog_ModSettings), doCloseSound: false);
-
-        faction.techLevel = startEra;
-        CoreLooks.Apply("UIRethemedCore_Slate", "UIRethemedCore_Honeycomb");
+        TestState.Restore();
         yield return Wait.Frames(5);
     }
 

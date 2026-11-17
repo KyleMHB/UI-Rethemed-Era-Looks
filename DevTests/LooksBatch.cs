@@ -12,15 +12,22 @@ using Verse;
 
 namespace EraLooks.DevTests;
 
-// Expected behaviour: GLOSSARY.md "Era look" and Defs/EraLooks.xml. Each era look's palette and pattern loads as an LFS Core def
-// with its texture, and the batch saves screenshots of the default look and every era look for the art review.
+// The visual tier: screenshots of the default look and every era look for the art review (GLOSSARY.md "Era look"). Whether
+// the defs load is ChecksBatch's. eralooks-screens shoots every look plus the settings pages and faction shots;
+// eralooks-screens-<look> (for example eralooks-screens-medieval) shoots only the default look and that one, for a change to
+// one era's art.
 // The screenshots are not a case of their own: the developer judges what they show. For each look the batch picks its palette and
 // pattern through Core's own setters (ThemeLook.Apply and ThemeLook.Pick, internal, so by reflection), the same calls Core's
 // settings page makes, then captures the colony with a colonist selected and the Architect tab open, and Core's settings page.
 // The runner's own save-data folder holds these settings, so the player's Core settings are never touched.
 public class LooksBatch : Batch
 {
-    private static readonly (string name, string palette, string pattern)[] Looks =
+    // The one era look to shoot beside the default, or null for all of them and the extra shots.
+    private readonly string only;
+
+    public LooksBatch(string only = null) => this.only = only;
+
+    internal static readonly (string name, string palette, string pattern)[] Looks =
     {
         ("default", "UIRethemedCore_Slate", "UIRethemedCore_Honeycomb"),
         ("animal", "EraLooks_Bone", "EraLooks_Scree"),
@@ -50,11 +57,10 @@ public class LooksBatch : Batch
     // 20%, yellow under 45% and green above).
     private static readonly float[] NeedLevels = { 0.12f, 0.35f, 0.85f };
 
-    public override string Id => "eralooks-screens";
+    public override string Id => only == null ? "eralooks-screens" : "eralooks-screens-" + only;
     public override int SegmentCount => 1;
     public override IReadOnlyList<PlannedCase> Plan { get; } = new[]
     {
-        new PlannedCase("eralooks.defs-load", Levels.Mechanical),
         new PlannedCase("eralooks.screenshots-saved", Levels.Mechanical),
     };
 
@@ -64,18 +70,6 @@ public class LooksBatch : Batch
         var apply = AccessTools.Method(look, "Apply", new[] { typeof(ThemePaletteDef), typeof(string) });
         var pick = AccessTools.Method(look, "Pick", new[] { typeof(PatternDef) });
 
-        var loading = ctx.Begin("eralooks.defs-load");
-        var missing = new List<string>();
-        foreach (var (_, palette, pattern) in Looks.Skip(1))
-        {
-            if (DefDatabase<ThemePaletteDef>.GetNamedSilentFail(palette) == null) missing.Add("palette " + palette);
-            var def = DefDatabase<PatternDef>.GetNamedSilentFail(pattern);
-            if (def == null) missing.Add("pattern " + pattern);
-            else if (def.Tex == null) missing.Add($"texture {def.texPath}");
-            else ctx.Setup($"{pattern}: texture {def.Tex.width}x{def.Tex.height}, tile {def.TileSize}, weight {def.weight}");
-        }
-        loading.Check(missing.Count == 0, "missing: " + string.Join(", ", missing));
-
         var shots = ctx.Begin("eralooks.screenshots-saved");
         if (apply == null || pick == null)
         {
@@ -83,7 +77,10 @@ public class LooksBatch : Batch
             yield break;
         }
         var core = LoadedModManager.ModHandles.FirstOrDefault(m => m.GetType().FullName == "UIRethemed.Core.UIRethemedCoreMod");
+        TestState.Save();
         var colonist = ctx.Map.mapPawns.FreeColonists.FirstOrDefault();
+        // A faction for every era, for the faction window and the selected-faction shots.
+        if (only == null) SandboxBatch.AddEraFactions(ctx);
         TestAnimals.Spawn(ctx.Map, colonist?.Position ?? ctx.Map.Center, ctx);
         var toggleTab = AccessTools.Method(typeof(InspectPaneUtility), "ToggleTab");
         if (toggleTab == null) ctx.Setup("InspectPaneUtility.ToggleTab was not found; skipped the inspector tab shots");
@@ -91,14 +88,15 @@ public class LooksBatch : Batch
         var paths = new List<string>();
         // These shots set each look by hand, so the colony's own era must not replace it.
         EraLooksMod.Settings.followEra = false;
-        foreach (var (name, palette, pattern) in Looks)
+        foreach (var (name, palette, pattern) in Looks.Where(l => only == null || l.name == "default" || l.name == only))
         {
             apply.Invoke(null, new object[] { DefDatabase<ThemePaletteDef>.GetNamed(palette), null });
             pick.Invoke(null, new object[] { DefDatabase<PatternDef>.GetNamed(pattern) });
             Find.Selector.ClearSelection();
             if (colonist != null) Find.Selector.Select(colonist, playSound: false, forceDesignatorDeselect: false);
-            // The main bar's own menu and the tabs of the LFS modules built on Core (Factions, Ideology, Relationships), then those
-            // that still carry their own copy of the theme, which Era Looks keeps in step with Core. A tab whose mod or DLC is missing is skipped.
+            // The main bar's own menu and the tabs of the LFS modules that draw through Core (Factions, Ideology, Relationships,
+            // History, Notifications), then those that still carry their own copy of the theme, which Era Looks keeps in step
+            // with Core. A tab whose mod or DLC is missing is skipped.
             foreach (var (shot, tab) in Tabs)
             {
                 var def = DefDatabase<MainButtonDef>.GetNamedSilentFail(tab);
@@ -133,6 +131,20 @@ public class LooksBatch : Batch
             yield return Wait.Frames(10);
             Find.WindowStack.TryRemove(typeof(Dialog_ModSettings), doCloseSound: false);
         }
+        if (only == null)
+            foreach (var w in ExtraShots(ctx, dir, paths, apply, pick)) yield return w;
+        TestState.Restore();
+        yield return Wait.Frames(30);
+
+        ctx.Setup("Screenshots: " + string.Join(", ", paths));
+        var unsaved = paths.Where(p => !File.Exists(p) || new FileInfo(p).Length == 0).ToList();
+        shots.Check(core != null && unsaved.Count == 0,
+            core == null ? "LFS Core's Mod class was not found, so its settings page could not open" : "not written: " + string.Join(", ", unsaved));
+    }
+
+    // The full set only: this mod's settings page and the faction window shots.
+    private static IEnumerable<Wait> ExtraShots(BatchContext ctx, string dir, List<string> paths, MethodInfo apply, MethodInfo pick)
+    {
         // This mod's own settings page, for the Workshop gallery, in the medieval look.
         var own = LoadedModManager.ModHandles.FirstOrDefault(m => m is EraLooksMod);
         var medieval = Looks.First(l => l.name == "medieval");
@@ -166,7 +178,6 @@ public class LooksBatch : Batch
         pick.Invoke(null, new object[] { DefDatabase<PatternDef>.GetNamed(Looks[0].pattern) });
 
         // The relations graph draws the selected faction's era as a large background, so select one faction per era.
-        // Run eralooks-sandbox first in the same session to have a faction for every era.
         var select = AccessTools.Method(AccessTools.TypeByName("UIRethemed.Factions.FactionsTab"), "Select", new[] { typeof(Faction) });
         var factionsTab = DefDatabase<MainButtonDef>.GetNamedSilentFail("Factions");
         if (select != null && factionsTab != null)
@@ -185,13 +196,6 @@ public class LooksBatch : Batch
         }
         else ctx.Setup("UI Rethemed - Factions' FactionsTab.Select was not found; skipped the selected-faction shots");
         EraLooksMod.Settings.factionEras = factionEras;
-        EraLooksMod.Settings.followEra = true;
-        yield return Wait.Frames(30);
-
-        ctx.Setup("Screenshots: " + string.Join(", ", paths));
-        var unsaved = paths.Where(p => !File.Exists(p) || new FileInfo(p).Length == 0).ToList();
-        shots.Check(core != null && unsaved.Count == 0,
-            core == null ? "LFS Core's Mod class was not found, so its settings page could not open" : "not written: " + string.Join(", ", unsaved));
     }
 
     private static void SetLevels(Pawn colonist)

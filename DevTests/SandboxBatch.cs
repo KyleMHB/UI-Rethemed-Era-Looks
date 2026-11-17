@@ -31,6 +31,16 @@ public class SandboxBatch : Batch
     public override IEnumerable<Wait> Segment(int index, BatchContext ctx)
     {
         var scope = ctx.Begin("eralooks.sandbox-factions");
+        var missing = AddEraFactions(ctx);
+        TestAnimals.Spawn(ctx.Map, ctx.Map.mapPawns.FreeColonists.FirstOrDefault()?.Position ?? ctx.Map.Center, ctx);
+        yield return Wait.Frames(5);
+        scope.Check(missing.Count == 0, "no faction def to copy for " + string.Join(", ", missing));
+    }
+
+    // One visible faction per era, added to the current colony's world. Also used by LooksBatch, as each batch starts from
+    // its own fresh colony and factions added by an earlier batch are gone. Returns the eras it found no def for.
+    internal static List<string> AddEraFactions(BatchContext ctx)
+    {
         var missing = new List<string>();
         foreach (var era in Eras)
         {
@@ -50,9 +60,7 @@ public class SandboxBatch : Batch
             Find.FactionManager.Add(faction);
             ctx.Setup($"{era}: added {faction.Name} ({def.defName})");
         }
-        TestAnimals.Spawn(ctx.Map, ctx.Map.mapPawns.FreeColonists.FirstOrDefault()?.Position ?? ctx.Map.Center, ctx);
-        yield return Wait.Frames(5);
-        scope.Check(missing.Count == 0, "no faction def to copy for " + string.Join(", ", missing));
+        return missing;
     }
 
     private static bool Visible(FactionDef d) => !d.isPlayer && !d.hidden && d.humanlikeFaction;
