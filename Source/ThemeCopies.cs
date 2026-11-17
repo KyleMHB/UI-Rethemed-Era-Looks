@@ -45,8 +45,31 @@ internal static class ThemeCopies
             else Changed(name);
             if (AccessTools.Field(theme, "Colors") != null) loaded.Add((name, theme));
             else Redirect(harmony, name, theme);
+            if (module == "Animals" || module == "Wildlife") PlainAnimals(harmony, theme.Assembly);
         }
     }
+
+    // Animals have no era, so an era pattern behind an animal's icon or details header reads as if they did. Those draws
+    // show no pattern: the methods that draw an animal's row name, card, portrait or header, found by name and by taking an
+    // animal (or species, group or pawn).
+    private static readonly string[] AnimalDraws = { "NameCell", "AnimalRow", "GroupName", "Card", "Portrait", "Header" };
+    private static readonly string[] AnimalTypes = { "Animal", "AnimalGroup", "Species", "Pawn" };
+    private static int plain;
+
+    private static void PlainAnimals(Harmony harmony, Assembly assembly)
+    {
+        var prefix = new HarmonyMethod(typeof(ThemeCopies), nameof(PlainStart));
+        var finalizer = new HarmonyMethod(typeof(ThemeCopies), nameof(PlainEnd));
+        foreach (var method in MethodsOf(assembly))
+        {
+            if (!AnimalDraws.Contains(method.Name)) continue;
+            if (!method.GetParameters().Any(p => AnimalTypes.Contains(p.ParameterType.Name))) continue;
+            harmony.Patch(method, prefix: prefix, finalizer: finalizer);
+        }
+    }
+
+    private static void PlainStart() => plain++;
+    private static void PlainEnd() => plain--;
 
     // A copy whose colours are static readonly fields can't be written: the JIT folds such fields into the code that reads
     // them once it optimises that code, so a write would stop showing. Instead every method of the module that reads one is
@@ -152,7 +175,7 @@ internal static class ThemeCopies
     // The other Pattern overload sets GUI.color first and Core keeps it, so the colour and fade carry over.
     private static bool Pattern(Rect rect, Vector2 offset)
     {
-        UIRethemed.Core.Theme.Pattern(rect, offset);
+        if (plain == 0) UIRethemed.Core.Theme.Pattern(rect, offset);
         return false;
     }
 }
