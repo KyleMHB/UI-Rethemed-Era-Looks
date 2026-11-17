@@ -1,6 +1,6 @@
 # UI Rethemed - Era Looks Testing
 
-Updated through: 0.3.0 plus unreleased changes on 2026-11-17
+Updated through: 0.3.1 on 2026-11-17
 
 ## Agent read route
 
@@ -103,6 +103,15 @@ python tools/eralooks_test.py run eralooks-sandbox --keep-open
 ## Result recording
 
 The harness writes `summary.txt` and `report.json` per run. Read the latest with `python tools/eralooks_test.py latest`. Record a result here only for a release or a notable finding.
+
+## 2026-11-17 - Full tier for 0.3.1
+
+- Version/environment: 0.3.1; RimWorld 1.7 with Ideology and Biotech; default mod set, then the `perf` mod set.
+- Actions: `run run-all`, then `run eralooks-screens eralooks-notifications --timeout 2400` (the launcher won't take run-all with other batches in one command), then `run perf eralooks-perf --mods perf`.
+- Expected: every behaviour check and perf case passes, with no Era Looks errors; screenshots written for every look.
+- Observed: run-all `20261117-170716` passed all 11 behaviour checks, with no error naming Era Looks. `eralooks-screens` (`20261117-170746`) wrote 145 shots and `eralooks-notifications` (`20261117-170928`) wrote 40, five per look; spot-checked shots show the letters, events, alerts and hover cards. `perf` (`20261117-171014`) and `eralooks-perf` (`20261117-171030`) passed, with `perf.frame-update` and `perf.pattern-draw` inside their budgets.
+- Status: Passed. The screenshots are evidence only.
+- Follow-up: none.
 
 ## 2026-11-17 - Quick tier after the tiered split
 
