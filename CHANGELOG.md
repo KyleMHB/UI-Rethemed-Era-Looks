@@ -2,6 +2,12 @@
 
 <!-- Agent read route: read only the newest relevant release; locate older versions by searching `^## ` headings. -->
 
+## 2026-11-18
+
+### Changed
+
+- UI Rethemed - Colonist Card and Wildlife now get the era look straight from UI Rethemed - Core, since their latest updates draw through Core. This mod no longer copies its colours and pattern into them. Wildlife's details header stays plain unless you pick a pattern for it on Wildlife's tab in Core's settings.
+
 ## 2026-11-17 (evening)
 
 ### Changed

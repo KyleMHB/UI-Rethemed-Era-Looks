@@ -13,7 +13,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DEST = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "E:/Steam/steamapps/common/RimWorld/Mods/UI-Rethemed-Era-Looks")
-FOLDERS = ["About", "1.7", "Defs", "Languages", "Textures"]
+FOLDERS = ["About", "1.7", "Defs", "Languages", "Patches", "Textures"]
 FILES = ["LoadFolders.xml", "LICENSE"]
 KEEP = {pathlib.Path("About/PublishedFileId.txt")}
 

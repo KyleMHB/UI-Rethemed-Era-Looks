@@ -3,8 +3,8 @@
 [b]The era looks show across the UI Rethemed suite.[/b]
 
 [list]
-[*]Main Bar, Factions, History, Notifications, Relationships and Work get the full look. Ideology gets the palette.
-[*]Architect, Animals, Colonist Card, Inspector Tabs, Quests and Wildlife still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
+[*]Main Bar, Colonist Card, Factions, History, Notifications, Relationships, Wildlife and Work get the full look. Ideology gets the palette.
+[*]Architect, Animals, Inspector Tabs and Quests still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
 [*]If one of those mods changes how it draws its theme in an update, it keeps its own look until this mod catches up, and the game log names it.
 [/list]
 

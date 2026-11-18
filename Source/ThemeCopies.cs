@@ -17,8 +17,7 @@ internal static class ThemeCopies
     // Each module's namespace under UIRethemed, and its name as players see it.
     private static readonly (string module, string name)[] Modules =
     {
-        ("Architect", "Architect"), ("Animals", "Animals"), ("ColonistCard", "Colonist Card"),
-        ("InspectorTabs", "Inspector Tabs"), ("Quests", "Quests"), ("Wildlife", "Wildlife"),
+        ("Architect", "Architect"), ("Animals", "Animals"), ("InspectorTabs", "Inspector Tabs"), ("Quests", "Quests"),
     };
 
     private static readonly List<(string name, Type theme)> loaded = new();
@@ -45,7 +44,7 @@ internal static class ThemeCopies
             else Changed(name);
             if (AccessTools.Field(theme, "Colors") != null) loaded.Add((name, theme));
             else Redirect(harmony, name, theme);
-            if (module == "Animals" || module == "Wildlife") PlainAnimals(harmony, theme.Assembly);
+            if (module == "Animals") PlainAnimals(harmony, theme.Assembly);
         }
     }
 

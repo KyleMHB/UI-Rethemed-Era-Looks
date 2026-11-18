@@ -17,7 +17,7 @@ public sealed class ModHarness : HarnessSettings
     public override bool FailOnModErrors => true;
     public override string EvidenceFolder => "EraLooksTests";
     public override string ColonyName => "Era Looks Test Colony";
-    public override string[] RuntimeFolders => new[] { "About", "1.7", "Defs", "Languages", "Textures" };
+    public override string[] RuntimeFolders => new[] { "About", "1.7", "Defs", "Languages", "Patches", "Textures" };
     public override string[] RuntimeFiles => new[] { "LoadFolders.xml" };
 
     // The tiers are in TESTING.md: run-all is the quick tier; the screens batches are the visual tier.

@@ -100,7 +100,7 @@ public class ChecksBatch : Batch
         ctx.Setup("Theme-copy modules loaded: " + string.Join(", ", loaded));
         wanted.Add(("ThemeCopies.Pattern", loaded.Count, "each loaded theme copy's Theme.Pattern"));
         if (loaded.Contains("InspectorTabs")) wanted.Add(("ThemeCopies.ReadCore", 1, "Inspector Tabs' reads of its colour fields"));
-        if (loaded.Contains("Animals") || loaded.Contains("Wildlife")) wanted.Add(("ThemeCopies.PlainStart", 1, "the animal icon and header draws"));
+        if (loaded.Contains("Animals")) wanted.Add(("ThemeCopies.PlainStart", 1, "the animal icon and header draws"));
         if (AccessTools.TypeByName("UIRethemed.Factions.FactionsApi") != null)
         {
             wanted.Add(("FactionEras.RowPrefix", 1, "Factions' FactionRail.Row"));

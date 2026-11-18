@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Animals have no era, so an era pattern behind an animal's header in UI Rethemed - Wildlife's details reads as if they
+  did. Its details header wears Core's plain pattern by default instead of the theme's; a player can still pick one on
+  Wildlife's tab in Core's settings. Skipped when Wildlife isn't loaded or already gives the header a default.
+-->
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/UIRethemed.Core.ModThemeDef[defName="UIRethemedWildlife_Theme"]/patterns/li[key="detailsHeader"][not(pattern)]</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/UIRethemed.Core.ModThemeDef[defName="UIRethemedWildlife_Theme"]/patterns/li[key="detailsHeader"]</xpath>
+      <value>
+        <pattern>UIRethemedCore_Plain</pattern>
+      </value>
+    </match>
+  </Operation>
+</Patch>
