@@ -1,1 +1,1 @@
-Update 0.3.1: UI Rethemed - History and Notifications now draw their theme through Core, so they get the era look from Core directly. Notifications' letter cards are plain unless you pick a pattern for them on Notifications' tab in Core's settings. This update also fixes an error in the log while a new game or a save loads.
+Update 0.3.2: UI Rethemed - Colonist Card and Wildlife now draw their theme through Core, so they get the era look from Core directly. Wildlife's details header stays plain unless you pick a pattern for it on Wildlife's tab in Core's settings.

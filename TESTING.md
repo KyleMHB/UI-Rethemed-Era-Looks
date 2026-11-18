@@ -1,6 +1,6 @@
 # UI Rethemed - Era Looks Testing
 
-Updated through: 0.3.1 on 2026-11-17
+Updated through: 0.3.2 on 2026-11-18
 
 ## Agent read route
 
@@ -103,6 +103,15 @@ python tools/eralooks_test.py run eralooks-sandbox --keep-open
 ## Result recording
 
 The harness writes `summary.txt` and `report.json` per run. Read the latest with `python tools/eralooks_test.py latest`. Record a result here only for a release or a notable finding.
+
+## 2026-11-18 - Full tier for 0.3.2
+
+- Version/environment: 0.3.2, with Colonist Card and Wildlife drawing through Core (UI Rethemed - Wildlife 1.3.0); RimWorld 1.7 with Ideology and Biotech; default mod set, then the `perf` mod set.
+- Actions: `run run-all`, then `run eralooks-screens eralooks-notifications --timeout 2400`, then `run perf eralooks-perf --mods perf`.
+- Expected: every behaviour check and perf case passes, with no Era Looks errors; Wildlife's details header plain in every look.
+- Observed: run-all `20261118-113608` passed all 11 behaviour checks, with no error naming Era Looks; the theme-copy modules loaded are Architect, Animals, Inspector Tabs and Quests. `eralooks-screens` (`20261118-113634`) wrote 145 shots; in `medieval-wildlife.png` the Wildlife window shows the medieval palette and title bar pattern, with a plain details header. `eralooks-notifications` (`20261118-113816`), `perf` (`20261118-113855`) and `eralooks-perf` (`20261118-113911`) passed.
+- Status: Passed. The screenshots are evidence only.
+- Follow-up: none.
 
 ## 2026-11-17 - Full tier for 0.3.1
 
