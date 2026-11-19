@@ -1,1 +1,1 @@
-Update 0.3.2: UI Rethemed - Colonist Card and Wildlife now draw their theme through Core, so they get the era look from Core directly. Wildlife's details header stays plain unless you pick a pattern for it on Wildlife's tab in Core's settings.
+Update 0.3.3: UI Rethemed - Inspector Tabs 2.0.0 now draws its theme through Core, so its colonist and animal tabs get the era look from Core directly.

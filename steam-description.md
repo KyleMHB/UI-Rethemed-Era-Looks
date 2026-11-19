@@ -14,7 +14,7 @@ Your tribal colony's interface can look like split wood and fieldstone instead o
 
 This add-on for Lazy Friday Studio's [b]UI Rethemed[/b] gives each of RimWorld's seven tech levels its own palette and pattern. Each pattern is a plain material texture that suits the level, and it changes as your colony advances. Your own UI Rethemed colours stay saved and come back whenever you turn this off.
 
-[b]Mod version:[/b] 0.3.2
+[b]Mod version:[/b] 0.3.3
 
 [h1]Features[/h1]
 

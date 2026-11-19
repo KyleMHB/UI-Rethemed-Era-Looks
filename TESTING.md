@@ -111,7 +111,7 @@ The harness writes `summary.txt` and `report.json` per run. Read the latest with
 - Expected: every behaviour check and perf case passes, with no Era Looks errors; Inspector Tabs still shows the era look.
 - Observed: run-all `20261119-150419` passed all 11 behaviour checks, with no error naming Era Looks. Inspector Tabs no longer has a `UIRethemed.InspectorTabs.Theme`, so the theme-copy modules loaded are now Architect, Animals and Quests (3 theme-copy patterns, no Inspector Tabs reads). It draws through Core: in `eralooks-screens` (`20261119-150512`) the medieval needs, health and bio tabs show the medieval panel colour (44,51,80) against the default (47,51,55), as on 2026-11-18. `eralooks-notifications` (`20261119-150653`), `perf` (`20261119-150743`) and `eralooks-perf` (`20261119-150758`) passed.
 - Status: Passed.
-- Follow-up: Inspector Tabs was then removed from `ThemeCopies`, along with the static-field colour redirect (`ReadCore`) that only it used, and the README, Steam description and About text updated.
+- Follow-up: Inspector Tabs was then removed from `ThemeCopies`, along with the static-field colour redirect (`ReadCore`) that only it used, and the README, Steam description and About text updated. On that build (released as 0.3.3), run-all `20261119-172033` passed all 11 behaviour checks with Architect, Animals and Quests as the theme copies, and `perf` (`20261119-172850`) and `eralooks-perf` (`20261119-172905`) passed. `release-check` flags `About/Preview.png` at 1,071,933 bytes, over Steam's 1 MB limit; the preview isn't re-sent on updates, so it only matters if the preview is replaced.
 
 ## 2026-11-18 - Full tier for 0.3.2
 
