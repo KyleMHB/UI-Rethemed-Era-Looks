@@ -99,7 +99,6 @@ public class ChecksBatch : Batch
         var loaded = modules.Where(m => AccessTools.TypeByName($"UIRethemed.{m.Item1}.Theme") != null).Select(m => m.Item1).ToList();
         ctx.Setup("Theme-copy modules loaded: " + string.Join(", ", loaded));
         wanted.Add(("ThemeCopies.Pattern", loaded.Count, "each loaded theme copy's Theme.Pattern"));
-        if (loaded.Contains("InspectorTabs")) wanted.Add(("ThemeCopies.ReadCore", 1, "Inspector Tabs' reads of its colour fields"));
         if (loaded.Contains("Animals")) wanted.Add(("ThemeCopies.PlainStart", 1, "the animal icon and header draws"));
         if (AccessTools.TypeByName("UIRethemed.Factions.FactionsApi") != null)
         {

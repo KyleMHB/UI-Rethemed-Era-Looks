@@ -9,8 +9,8 @@ This RimWorld add-on for Lazy Friday Studio's **UI Rethemed** gives each of the 
 > [!IMPORTANT]
 > The era looks show across the UI Rethemed suite.
 >
-> - Main Bar, Colonist Card, Factions, History, Notifications, Relationships, Wildlife and Work get the full look. Ideology gets the palette.
-> - Architect, Animals, Inspector Tabs and Quests still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
+> - Main Bar, Colonist Card, Factions, History, Inspector Tabs, Notifications, Relationships, Wildlife and Work get the full look. Ideology gets the palette.
+> - Architect, Animals and Quests still carry their own copy of the theme. This mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core.
 > - If one of those mods changes how it draws its theme in an update, it keeps its own look until this mod catches up, and the game log names it.
 
 ## Features

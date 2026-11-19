@@ -104,6 +104,15 @@ python tools/eralooks_test.py run eralooks-sandbox --keep-open
 
 The harness writes `summary.txt` and `report.json` per run. Read the latest with `python tools/eralooks_test.py latest`. Record a result here only for a release or a notable finding.
 
+## 2026-11-19 - Full tier after UI Rethemed - Inspector Tabs 2.0.0
+
+- Version/environment: 0.3.2 unchanged; UI Rethemed Core and Inspector Tabs 2.0.0 updated on 2026-11-19, which moved Inspector Tabs' defs into `UIRethemed.Core`; RimWorld 1.7 with Ideology and Biotech; default mod set, then the `perf` mod set.
+- Actions: `run run-all`, then `run eralooks-screens eralooks-notifications --timeout 2400`, then `run perf eralooks-perf --mods perf`.
+- Expected: every behaviour check and perf case passes, with no Era Looks errors; Inspector Tabs still shows the era look.
+- Observed: run-all `20261119-150419` passed all 11 behaviour checks, with no error naming Era Looks. Inspector Tabs no longer has a `UIRethemed.InspectorTabs.Theme`, so the theme-copy modules loaded are now Architect, Animals and Quests (3 theme-copy patterns, no Inspector Tabs reads). It draws through Core: in `eralooks-screens` (`20261119-150512`) the medieval needs, health and bio tabs show the medieval panel colour (44,51,80) against the default (47,51,55), as on 2026-11-18. `eralooks-notifications` (`20261119-150653`), `perf` (`20261119-150743`) and `eralooks-perf` (`20261119-150758`) passed.
+- Status: Passed.
+- Follow-up: Inspector Tabs was then removed from `ThemeCopies`, along with the static-field colour redirect (`ReadCore`) that only it used, and the README, Steam description and About text updated.
+
 ## 2026-11-18 - Full tier for 0.3.2
 
 - Version/environment: 0.3.2, with Colonist Card and Wildlife drawing through Core (UI Rethemed - Wildlife 1.3.0); RimWorld 1.7 with Ideology and Biotech; default mod set, then the `perf` mod set.

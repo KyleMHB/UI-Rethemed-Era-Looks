@@ -27,7 +27,7 @@
   </loadAfter>
   <description>Gives Lazy Friday Studio's UI Rethemed a look for each tech level, so a tribal or medieval colony doesn't get the spacer-style honeycomb.
 
-The era looks show across the UI Rethemed suite. The main bar, Colonist Card, Factions, History, Notifications, Relationships, Wildlife and Work get the full look, and Ideology gets the palette. Architect, Animals, Inspector Tabs and Quests still carry their own copy of the theme, so this mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core. Colours that show a state, such as need bars and health, keep the standard green.
+The era looks show across the UI Rethemed suite. The main bar, Colonist Card, Factions, History, Inspector Tabs, Notifications, Relationships, Wildlife and Work get the full look, and Ideology gets the palette. Architect, Animals and Quests still carry their own copy of the theme, so this mod copies the era's colours and pattern into them until Lazy Friday Studio moves them onto Core. Colours that show a state, such as need bars and health, keep the standard green.
 
 Each of the seven tech levels gets a palette and a plain material texture:
 

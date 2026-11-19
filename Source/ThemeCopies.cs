@@ -17,14 +17,10 @@ internal static class ThemeCopies
     // Each module's namespace under UIRethemed, and its name as players see it.
     private static readonly (string module, string name)[] Modules =
     {
-        ("Architect", "Architect"), ("Animals", "Animals"), ("InspectorTabs", "Inspector Tabs"), ("Quests", "Quests"),
+        ("Architect", "Architect"), ("Animals", "Animals"), ("Quests", "Quests"),
     };
 
     private static readonly List<(string name, Type theme)> loaded = new();
-
-    // The colour fields of copies that keep them as static readonly fields on Theme itself (Inspector Tabs), each with the
-    // Core getter of the same name that its reads are sent to.
-    private static readonly Dictionary<FieldInfo, MethodInfo> reads = new();
 
     // One palette object per loaded copy, with each field paired to the Core colour of the same name. Empty until startup
     // has finished, and then replaced whole, as CoreBridge's Update can run while mods are still loading.
@@ -43,7 +39,7 @@ internal static class ThemeCopies
             if (pattern != null) harmony.Patch(pattern, prefix: prefix);
             else Changed(name);
             if (AccessTools.Field(theme, "Colors") != null) loaded.Add((name, theme));
-            else Redirect(harmony, name, theme);
+            else Changed(name);
             if (module == "Animals") PlainAnimals(harmony, theme.Assembly);
         }
     }
@@ -70,28 +66,6 @@ internal static class ThemeCopies
     private static void PlainStart() => plain++;
     private static void PlainEnd() => plain--;
 
-    // A copy whose colours are static readonly fields can't be written: the JIT folds such fields into the code that reads
-    // them once it optimises that code, so a write would stop showing. Instead every method of the module that reads one is
-    // patched to call Core's getter of the same name.
-    private static void Redirect(Harmony harmony, string name, Type theme)
-    {
-        foreach (var field in theme.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static))
-        {
-            if (field.FieldType != typeof(Color)) continue;
-            var core = AccessTools.PropertyGetter(typeof(UIRethemed.Core.Theme), field.Name);
-            if (core != null && core.IsStatic && core.ReturnType == typeof(Color)) reads[field] = core;
-        }
-        if (reads.Count == 0)
-        {
-            Changed(name);
-            return;
-        }
-        var transpiler = new HarmonyMethod(typeof(ThemeCopies), nameof(ReadCore));
-        foreach (var method in MethodsOf(theme.Assembly))
-            if (Body(method).Any(code => code.operand is FieldInfo field && reads.ContainsKey(field)))
-                harmony.Patch(method, transpiler: transpiler);
-    }
-
     internal static IEnumerable<MethodBase> MethodsOf(Assembly assembly) =>
         AccessTools.GetTypesFromAssembly(assembly)
             .SelectMany(type => AccessTools.GetDeclaredMethods(type).Cast<MethodBase>()
@@ -107,31 +81,6 @@ internal static class ThemeCopies
         catch (Exception)
         {
             return new List<(OpCode, object)>(); // extern or bodiless
-        }
-    }
-
-    private static IEnumerable<CodeInstruction> ReadCore(IEnumerable<CodeInstruction> instructions, ILGenerator il)
-    {
-        foreach (var code in instructions)
-        {
-            if (code.operand is FieldInfo field && reads.TryGetValue(field, out var core))
-            {
-                if (code.opcode == OpCodes.Ldsfld)
-                {
-                    code.opcode = OpCodes.Call;
-                    code.operand = core;
-                }
-                else if (code.opcode == OpCodes.Ldsflda)
-                {
-                    // The field's address was wanted, so the value goes through a local of its own.
-                    var local = il.DeclareLocal(typeof(Color));
-                    yield return new CodeInstruction(OpCodes.Call, core).MoveLabelsFrom(code).MoveBlocksFrom(code);
-                    yield return new CodeInstruction(OpCodes.Stloc, local);
-                    yield return new CodeInstruction(OpCodes.Ldloca, local);
-                    continue;
-                }
-            }
-            yield return code;
         }
     }
 
