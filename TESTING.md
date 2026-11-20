@@ -111,6 +111,7 @@ The harness writes `summary.txt` and `report.json` per run. Read the latest with
 - Expected: every behaviour check and perf case passes, with no Era Looks errors; Architect shows the era look through Core.
 - Observed: run-all `20261120-210805` passed all 11 behaviour checks, with no error naming Era Looks; the theme-copy modules loaded are Animals and Quests. In `eralooks-screens` (`20261120-210834`), `medieval-architect.png` shows the lapis and gold palette and the cut-stone title banner, against the slate and honeycomb in `default-architect.png`. `eralooks-notifications` (`20261120-211016`), `perf` (`20261120-211050`) and `eralooks-perf` (`20261120-211105`) passed.
 - Status: Passed.
+- Follow-up: released as 0.3.4. `release-check` passed except the known `About/Preview.png` size flag (1,071,933 bytes); the preview isn't re-sent on updates.
 
 ## 2026-11-19 - Full tier after UI Rethemed - Inspector Tabs 2.0.0
 

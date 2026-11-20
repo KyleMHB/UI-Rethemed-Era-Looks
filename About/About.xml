@@ -6,7 +6,7 @@
   <supportedVersions>
     <li>1.7</li>
   </supportedVersions>
-  <modVersion>0.3.3</modVersion>
+  <modVersion>0.3.4</modVersion>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>
