@@ -88,7 +88,7 @@ python tools/eralooks_test.py run perf eralooks-perf --mods perf
 | Case | Scale | Budget |
 | --- | --- | --- |
 | `perf.frame-update` | `CoreBridge.Update` at 60 frames (one second) | under 1 ms |
-| `perf.pattern-draw` | The theme-copy pattern prefix at 50 draws a frame (a busy Architect window), at the title banner's size | under 0.5 ms added |
+| `perf.pattern-draw` | The theme-copy pattern prefix at 50 draws a frame (a busy Quests window), at the title banner's size | under 0.5 ms added |
 
 Release check: `python tools/eralooks_test.py release-check`.
 
@@ -103,6 +103,14 @@ python tools/eralooks_test.py run eralooks-sandbox --keep-open
 ## Result recording
 
 The harness writes `summary.txt` and `report.json` per run. Read the latest with `python tools/eralooks_test.py latest`. Record a result here only for a release or a notable finding.
+
+## 2026-11-20 - Full tier after UI Rethemed - Architect 1.13.0
+
+- Version/environment: 0.3.3 with Architect removed from `ThemeCopies` and `perf.pattern-draw` timing Quests' `Theme.Pattern`; UI Rethemed - Architect 1.13.0 updated on 2026-11-20 and has no `UIRethemed.Architect.Theme`; RimWorld 1.7 with Ideology and Biotech; default mod set, then the `perf` mod set.
+- Actions: `run run-all`, then `run eralooks-screens eralooks-notifications --timeout 2400`, then `run perf eralooks-perf --mods perf`.
+- Expected: every behaviour check and perf case passes, with no Era Looks errors; Architect shows the era look through Core.
+- Observed: run-all `20261120-210805` passed all 11 behaviour checks, with no error naming Era Looks; the theme-copy modules loaded are Animals and Quests. In `eralooks-screens` (`20261120-210834`), `medieval-architect.png` shows the lapis and gold palette and the cut-stone title banner, against the slate and honeycomb in `default-architect.png`. `eralooks-notifications` (`20261120-211016`), `perf` (`20261120-211050`) and `eralooks-perf` (`20261120-211105`) passed.
+- Status: Passed.
 
 ## 2026-11-19 - Full tier after UI Rethemed - Inspector Tabs 2.0.0
 

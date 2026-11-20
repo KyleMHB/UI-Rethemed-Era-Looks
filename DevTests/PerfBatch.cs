@@ -14,7 +14,7 @@ namespace EraLooks.DevTests;
 // calls one realistic situation makes and the budget for that scale.
 public class PerfBatch : Batch
 {
-    // A busy window such as Architect draws its title banner, popup headers and lit faces: about 50 pattern draws a frame.
+    // A busy window such as Quests draws its title banner, group headers and lit faces: about 50 pattern draws a frame.
     private const int DrawsPerFrame = 50;
     private const double DrawBudgetMs = 0.5;
     // One second of frames at 60 fps.
@@ -58,11 +58,11 @@ public class PerfBatch : Batch
         }
 
         var d = ctx.Begin("perf.pattern-draw").Expect("addedMsAtScale", "< " + DrawBudgetMs);
-        var theme = AccessTools.TypeByName("UIRethemed.Architect.Theme");
+        var theme = AccessTools.TypeByName("UIRethemed.Quests.Theme");
         var pattern = theme == null ? null : AccessTools.Method(theme, "Pattern", new[] { typeof(Rect), typeof(Vector2) });
         if (pattern == null)
         {
-            d.Error("UI Rethemed - Architect's Theme.Pattern(Rect, Vector2) not found; the default mod set loads Architect");
+            d.Error("UI Rethemed - Quests' Theme.Pattern(Rect, Vector2) not found; the default mod set loads Quests");
             yield break;
         }
 
@@ -71,7 +71,7 @@ public class PerfBatch : Batch
         harmony.Patch(onGui, postfix: new HarmonyMethod(typeof(PerfBatch), nameof(RunOnRepaint)));
         PatchCost cost = null;
         string failure = null;
-        // The size of Architect's title banner.
+        // The size of a wide title banner.
         var banner = new Rect(10f, 10f, 1200f, 40f);
         var draw = (Action<Rect, Vector2>)Delegate.CreateDelegate(typeof(Action<Rect, Vector2>), pattern);
         onRepaint = () =>
@@ -87,7 +87,7 @@ public class PerfBatch : Batch
         else if (cost == null) d.Error("no Repaint ran the timing within 5 frames");
         else
         {
-            cost.Report(d, DrawsPerFrame, "pattern draws in one frame of a busy Architect window, at the title banner's size");
+            cost.Report(d, DrawsPerFrame, "pattern draws in one frame of a busy Quests window, at the title banner's size");
             d.Check(cost.AddedMsPerCall * DrawsPerFrame < DrawBudgetMs, $"the pattern prefix adds {CaseScope.Format(cost.AddedMsPerCall * DrawsPerFrame)} ms a frame at {DrawsPerFrame} draws, over the {DrawBudgetMs} ms budget");
         }
     }

@@ -2,6 +2,12 @@
 
 <!-- Agent read route: read only the newest relevant release; locate older versions by searching `^## ` headings. -->
 
+## 2026-11-20
+
+### Changed
+
+- UI Rethemed - Architect now gets the era look straight from UI Rethemed - Core, since its 1.13.0 update draws through Core. This mod no longer copies the era's colours and pattern into it.
+
 ## 2026-11-19
 
 ### Changed
